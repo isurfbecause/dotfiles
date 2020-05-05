@@ -51,7 +51,7 @@ alias subl='open -a "Sublime Text"'
 alias c='clear'
 
 #alias
-alias srcbash='source ~/.bash_profile'
+alias srcbash='source ~/.bashrc'
 alias hl='history | less'
 
 #git
@@ -65,13 +65,10 @@ alias gs='git status -s'
 alias grh='git reset --hard'
 #remove branches that have already been merged into master
 alias gcleanbranches='git branch --merged master | grep -v "\* master" | xargs -n 1 git branch -d; git remote prune origin;'
-alias gpp='git pull && git push'
 #remove files that are not tracked by git
 alias gdf='git clean -df'
 alias gpm='git pull origin master'
 alias gco='git checkout $(git branch | fzf)'
-
-alias sourceProfile='source ~/.profile'
 alias ls="command ls -G"
 
 #ip address
@@ -87,6 +84,5 @@ alias python2="python2.7"
 export VISUAL=nvim
 alias vim=nvim
 alias vi=nvim
-alias vimrc='vim ~/.vimrc'
 export VIMCONFIG=~/.config/nvim
 export VIMDATA=~/.local/share/nvim

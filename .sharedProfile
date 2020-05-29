@@ -54,6 +54,9 @@ alias c='clear'
 alias srcbash='source ~/.bashrc'
 alias hl='history | less'
 
+#config dotfiles
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
 #git
 alias gom='git checkout master'
 alias gd='git diff'

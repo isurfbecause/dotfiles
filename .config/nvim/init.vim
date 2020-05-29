@@ -30,6 +30,7 @@ Plug 'digitaltoad/vim-pug'
 Plug 'posva/vim-vue'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'zirrostig/vim-smart-swap'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Pop Up Menu Completion
 Plug 'neoclide/coc-neco'

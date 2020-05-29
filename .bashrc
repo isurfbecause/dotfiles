@@ -127,3 +127,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH=/home/winston/.local/bin:$PATH
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

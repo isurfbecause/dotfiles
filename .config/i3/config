@@ -186,3 +186,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # doesn't work
 bindsym $mod+Ctrl+greater move workspace to output up
 bindsym $mod+Ctrl+less move workspace to output down
+
+# Startup
+exec xrandr --output eDP-1-1 --auto --left-of HDMI-0 --mode 1920x1080
+

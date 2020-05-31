@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+BAR1=main
+
 # Terminate already running bar instances
 killall -q polybar
 
@@ -9,7 +11,10 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 # Launch polybar
 #polybar main -c $HOME/.config/polybar/config.ini &
 
-for m in $(polybar --list-monitors | cut -d":" -f1); do
-	WIRELESS=$(ls /sys/class/net/ | grep ^wl | awk 'NR==1{print $1}') MONITOR=$m polybar --reload main &
-done
-
+if type "xrandr"; then
+  for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+    MONITOR=$m polybar --reload "$BAR1" &
+  done
+else
+  polybar --reload "$BAR1" &
+fi

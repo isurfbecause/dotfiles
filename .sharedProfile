@@ -89,3 +89,7 @@ alias vim=nvim
 alias vi=nvim
 export VIMCONFIG=~/.config/nvim
 export VIMDATA=~/.local/share/nvim
+
+# Background image
+export DESKTOP_BACKGROUND_IMAGE=~/Pictures/surfing-background.jpg
+

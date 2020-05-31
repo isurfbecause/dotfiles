@@ -116,12 +116,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Madison Reed (no in source control)
+# Company config (not in source control)
 source ~/.mrrc
 
 # dotfiles
 alias config='/usr/bin/git --git-dir=/home/winston/.dotfiles/ --work-tree=/home/winston'
 
+# nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

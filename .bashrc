@@ -118,11 +118,17 @@ fi
 
 # Company config (not in source control)
 source ~/.mrrc
+source ~/.sharedProfile
 
-# dotfiles
-alias config='/usr/bin/git --git-dir=/home/winston/.dotfiles/ --work-tree=/home/winston'
+#config dotfiles
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias cfs='config status'
+alias cfd='config diff'
+alias cfa='config add'
+alias cfm='config commit -m '
 
 # nvm
+# Todo: Put nvm in another file. This makes terminal load time lag by a second
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -28,7 +28,7 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/main]
-monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR}
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
 width = 100%

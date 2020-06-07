@@ -7,3 +7,9 @@ clear Mod1
 clear Mod4
 add Mod1 = Alt_L 0x007D
 add Mod4 = Super_L Super_R
+
+! Remap capslock to ctrl
+clear lock
+clear control
+add control = Control_L
+keycode 66 = Control_L Caps_Lock NoSymbol NoSymbol

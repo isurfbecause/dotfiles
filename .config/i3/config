@@ -200,8 +200,7 @@ bindsym $mod+Ctrl+greater move workspace to output up
 bindsym $mod+Ctrl+less move workspace to output down
 
 # Startup
-#exec "xrandr --output eDP-1-1 --auto --left-of HDMI-0 --mode 1920x1080"
-exec "~/.screenlayout/external-monitor.sh"
+exec "~/.screenlayout/tb3.sh"
 
 # Background
 # TODO: put in a script, bash envs are different from i3 vars
@@ -219,3 +218,6 @@ exec --no-startup-id dunst
 
 # Klipper clipboard manager
 exec --no-startup-id klipper
+
+# Keybindings
+exect --no-startup-id xmodmap ~/.Xmodmap

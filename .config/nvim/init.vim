@@ -166,6 +166,10 @@ inoremap jj <ESC>
 inoremap kk <ESC>
 inoremap hh <ESC>
 
+" Terminal escape
+tnoremap jj <C-\><C-n>
+tnoremap <ESC> <C-\><C-n>
+
 " FZF remap
 let $FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 nnoremap <C-p> :<C-u>FZF<CR>
@@ -251,3 +255,7 @@ function! s:show_documentation()
   endif
 endfunction
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+
+noremap <leader>vs :vsp<cr>
+noremap <leader>hs :split<cr>

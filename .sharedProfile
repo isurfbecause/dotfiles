@@ -58,7 +58,7 @@ alias hl='history | less'
 alias gom='git checkout master'
 alias gd='git diff'
 #last branch
-alias glb='git co @{-1}'
+alias glb='git checkout @{-1}'
 #order by branches most used
 alias gb="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)'"
 alias gs='git status -s'
@@ -90,3 +90,6 @@ export VIMDATA=~/.local/share/nvim
 # Background image
 export DESKTOP_BACKGROUND_IMAGE=~/Pictures/surfing-background.jpg
 
+if [ $(uname) == 'Linux' ]; then
+  alias open="xdg-open"
+fi

@@ -1,2 +1,2 @@
-#!/bin/sh
-feh --no-fehbg --bg-scale "$DESKTOP_BACKGROUND_IMAGE"
+#!/bin/bash
+feh --no-fehbg --bg-fill "$HOME/Pictures/background.jpg"

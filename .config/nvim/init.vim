@@ -31,6 +31,7 @@ Plug 'posva/vim-vue'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'zirrostig/vim-smart-swap'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'chrisbra/Colorizer' "Highlight hex color codes
 
 " Pop Up Menu Completion
 Plug 'neoclide/coc-neco'

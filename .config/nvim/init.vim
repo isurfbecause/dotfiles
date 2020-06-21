@@ -39,8 +39,11 @@ Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 " Pop Up Menu End
+Plug 'ryanoasis/vim-devicons' "Add devicons in nertree
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight' "Add colors to devicons
 
 call plug#end()
+set encoding=UTF-8
 
 set formatoptions-=cro "Disable automatic comment insertion
 

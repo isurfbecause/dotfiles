@@ -62,7 +62,7 @@ source ~/.bash_colors
 # Editing default PS1
 if [ "$color_prompt" = yes ]; then
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    PS1="$Blue\w$Blue\$(__git_ps1 '($Purpleשׂ $Blue%s)') $Green \e[m"
+    PS1="${Blue}\w${Blue}\$(__git_ps1 '(${Purple}שׂ ${Blue}%s)') ${Green} \[\e[m\]"
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -130,7 +130,8 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias cfs='config status'
 alias cfd='config diff'
 alias cfa='config add'
-alias cfm='config commit -m '
+alias cfm='config commit -m'
+alias cfp='config push'
 
 # nvm
 # Todo: Put nvm in another file. This makes terminal load time lag by a second

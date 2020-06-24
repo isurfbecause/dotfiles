@@ -65,3 +65,5 @@ export DESKTOP_BACKGROUND_IMAGE=~/Pictures/surfing-background.jpg
 if [ $(uname) == 'Linux' ]; then
   alias open="xdg-open"
 fi
+
+alias g=git

@@ -51,7 +51,8 @@ bindsym $mod+Shift+q kill
 #bindsym $mod+space exec dmenu_run
 
 #Use Rofi instead of default dmenu
-bindsym $mod+space exec rofi -show drun -show-icons -sidebar-mode
+#bindsym $mod+space exec rofi -show combi -combi-modi "window" -show-icons -sidebar-mode
+bindsym $mod+space exec "rofi -combi-modi window,drun,ssh -show combi -modi combi"
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -219,7 +220,9 @@ exec_always --no-startup "~/.screenlayout/tb3.sh"
 bindsym $mod+$super+8 exec flameshot gui
 
 # Dunst notifications
-exec --no-startup-id dunst
+# TODO: remove the alway line, after we modify dunstrc
+exec_always --no-startup-id killall dunst; dunst -config ~/.config/dunst/dunstrc
+#exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 
 # Klipper clipboard manager
 exec --no-startup-id klipper
@@ -245,3 +248,13 @@ client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
 client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
 client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
 client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+
+# Scratchpad
+## Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
+# Increase border size for easier resizing
+default_border pixel 5

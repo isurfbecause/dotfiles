@@ -65,6 +65,8 @@ modules-right = pulseaudio date
 modules-center = vpn wlan cpu memory
 tray-position = right
 tray-padding = 30
+tray-scale = 1.0
+tray-maxsize = 28
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm

@@ -11,4 +11,7 @@ add Mod4 = Super_L Super_R
 clear lock
 clear control
 add control = Control_L
-keycode 66 = Control_L Caps_Lock NoSymbol NoSymbol
+keycode 66 = Control_L NoSymbol NoSymbol NoSymbol
+
+! If you want Caps_Lock+Shift to turn on caps lock
+!keycode 66 = Control_L Caps_Lock NoSymbol NoSymbol

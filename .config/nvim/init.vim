@@ -144,7 +144,7 @@ noremap <leader>w :w<cr>
 autocmd BufWritePre * %s/\s\+$//e
 
 " Copy current file name
-nmap <leader>fp :let @*=expand("%")<CR>
+nmap <leader>fp :let @+ = expand('%:p')<CR>
 
 " Remove serach highlighting
 nnoremap <esc> :noh<return><esc>

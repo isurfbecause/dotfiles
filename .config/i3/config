@@ -82,10 +82,10 @@ bindsym $mod+Shift+Right move right
 # split in horizontal orientation
 # Commented out because was conflicting with focus up
 #bindsym $mod+Shift+h split h
-bindsym $super+h split h;exec notify-send 'tile horizontally'
+bindsym $mod+i split h;exec notify-send 'tile horizontally'
 
 # split in vertical orientation
-bindsym $super+i split v;exec notify-send 'tile vertically'
+#bindsym $mod+v split v;exec notify-send 'tile vertically'
 #
 # split orientation
 #bindsym $mod+v split v;exec notify-send 'tile vertically'
@@ -96,7 +96,7 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -111,7 +111,13 @@ floating_modifier $mod
 
 # Floating Windows
 for_window [class="zoom"] floating enabled
-for_window [class="Slack"] floating enabled
+for_window [class="Slack"] floating enabled, resize set 1800 1280
+
+for_window [class="Spotify"] floating enabled
+
+for_window [class="Spotify"] mark "music", move scratchpad, resize set 1800 1280
+bindsym $mod+$super+m [con_mark="music"] scratchpad show
+exec spotify
 
 # Resize Floating Windows
 bindmouse button1 resize
@@ -213,7 +219,7 @@ bindsym $mod+Ctrl+greater move workspace to output up
 bindsym $mod+Ctrl+less move workspace to output down
 
 # Startup
-exec_always --no-startup "~/.screenlayout/tb3.sh"
+exec_always --no-startup "~/.screenlayout/external-monitor.sh"
 
 # Background
 exec --no-startup-id feh --no-fehbg --bg-fill ~/Pictures/background.jpg
@@ -225,6 +231,13 @@ exec --no-startup-id feh --no-fehbg --bg-fill ~/Pictures/background.jpg
 
 # Shortcut for the Del button
 bindsym --release control+Shift+BackSpace exec --no-startup-id xdotool key --clearmodifiers Delete
+
+# Still figuring what to remap Home and End to for efficiency
+#bindsym --release control+$mod+Left exec --no-startup-id xdotool key --clearmodifiers Home
+#bindsym --release control+$mod+Shift+Left exec --no-startup-id xdotool key --clearmodifiers Shift+Home
+
+#bindsym --release control+mod+Right exec --no-startup-id xdotool key --clearmodifiers End
+#bindsym --release control+mod+Shift+Right exec --no-startup-id xdotool key --clearmodifiers Shift+End
 
 #bindsym --release Control+BackSpace exec --no-startup xdotool key --clearmodifiers Delete
 

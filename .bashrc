@@ -128,7 +128,7 @@ source ~/.sharedProfile
 #config dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias cfs='config status'
-alias cfd='config diff'
+alias cfd='config diff | diff-so-fancy | less -R'
 alias cfa='config add'
 alias cfm='config commit -m'
 alias cfp='config push'

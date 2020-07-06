@@ -15,7 +15,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias ll="ls -lah | less"
+alias ll="ls -lah --color | less -R"
 
 alias p="cd ~/projects"
 alias py3="python3"
@@ -28,7 +28,7 @@ alias hl='history | less'
 
 #git
 alias gom='git checkout master'
-alias gd='git diff'
+alias gd='git diff --color | diff-so-fancy | less -R'
 #last branch
 alias glb='git checkout @{-1}'
 #order by branches most used
@@ -41,7 +41,7 @@ alias gcleanbranches='git branch --merged master | grep -v "\* master" | xargs -
 alias gdf='git clean -df'
 alias gpm='git pull origin master'
 alias gco='git checkout $(git branch | fzf)'
-alias ls="command ls -G"
+alias ls="command ls -G --color"
 
 #ip address
 alias ip="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"

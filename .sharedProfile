@@ -17,10 +17,13 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ll="ls -lah --color | less -R"
 
-alias p="cd ~/projects"
 alias py3="python3"
+
+# Change Directories
 alias mr="cd ~/mr"
+alias p="cd ~/projects"
 alias dl="cd ~/Downloads"
+alias ops="cd ~/projects/ops"
 
 #alias
 alias srcbash='source ~/.bashrc'
@@ -67,3 +70,10 @@ if [ $(uname) == 'Linux' ]; then
 fi
 
 alias g=git
+
+# Cheetsheet lookup
+function cheetsheet() {
+  curl cht.sh/$1 | less -R
+}
+
+alias cheatsh=cheetsheet

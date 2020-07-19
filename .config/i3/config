@@ -317,8 +317,10 @@ bindsym $mod+minus scratchpad show
 default_border pixel 5
 
 #navigate workspaces next / previous
+bindsym $mod+Ctrl+l workspace next
 bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
+bindsym $mod+Ctrl+h workspace prev
 
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes

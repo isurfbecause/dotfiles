@@ -49,7 +49,7 @@ bindsym $mod+Shift+q kill
 
 #Use Rofi instead of default dmenu
 #bindsym $mod+space exec rofi -show combi -combi-modi "window" -show-icons -sidebar-mode
-bindsym $mod+space exec "rofi -combi-modi window,drun,ssh -show combi -modi combi"
+bindsym $mod+space exec "rofi  -combi-modi window,drun,ssh -show combi -modi combi -show-icons"
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -115,15 +115,45 @@ for_window [class="zoom"] floating enabled
 for_window [class="Spotify"] floating enabled
 for_window [class="Spotify"] mark "music", move scratchpad, resize set 1800 1280
 bindsym $mod+$super+m [con_mark="music"] scratchpad show
+
+# Trying this binding out
+bindsym $mod+m [con_mark="music"] scratchpad show
 exec spotify
 
 for_window [class="Lotion"] floating enabled
 for_window [class="Lotion"] mark "notion", move scratchpad, resize set 1800 1280
 bindsym $mod+$super+n [con_mark="notion"] scratchpad show
+
+# Trying this binding out
+bindsym $mod+n [con_mark="notion"] scratchpad show
 exec notion
+
+# Slack ws9
+for_window [class="Slack"] move to workspace $ws9
 
 # Resize Floating Windows
 bindmouse button1 resize
+
+# move floating windows with keys
+set $float_moving_px 100px
+bindsym $super+m mode "move" focus floating
+mode "move" {
+    bindsym $mod+Tab focus right
+
+    bindsym Left  move left $float_moving_px
+    bindsym Down  move down $float_moving_px
+    bindsym Up    move up $float_moving_px
+    bindsym Right move right $float_moving_px
+
+    bindsym h     move left $float_moving_px
+    bindsym j     move down $float_moving_px
+    bindsym k     move up $float_moving_px
+    bindsym l     move right $float_moving_px
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $super+m mode "default"
+}
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -176,23 +206,19 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
+set $resize_ppt 100 px
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym l resize grow width 5 px or 5 ppt
-        bindsym j resize shrink height 5 px or 5 ppt
-        bindsym k resize grow height 5 px or 5 ppt
-        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym l resize grow width $resize_ppt
+        bindsym j resize shrink height $resize_ppt
+        bindsym k resize grow height $resize_ppt
+        bindsym h resize shrink width $resize_ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 5 px or 5 ppt
-        bindsym Up resize grow height 5 px or 5 ppt
-        bindsym Down resize shrink height 5 px or 5 ppt
-        bindsym Right resize grow width 5 px or 5 ppt
+        bindsym Left resize shrink width $resize_ppt
+        bindsym Up resize grow height $resize_ppt
+        bindsym Down resize shrink height $resize_ppt
+        bindsym Right resize grow width $resize_ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -205,7 +231,9 @@ bindsym $mod+r mode "resize"
 bindsym $mod+Shift+u		exec --no-startup-id i3resize down
 
 # #---Letter Key Bindings---# #
-bindsym $mod+q			[con_id="__focused__" instance="^(?!dropdown_).*$"] kill
+# Try out another key binding, I keep killing windows by accident
+#bindsym $mod+q [con_id="__focused__" instance="^(?!dropdown_).*$"] kill
+bindsym $mod+w [con_id="__focused__" instance="^(?!dropdown_).*$"] kill
 
 # startup polybar, not currently working
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh | tee /tmp/i3.log

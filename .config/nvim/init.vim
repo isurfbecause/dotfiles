@@ -1,20 +1,14 @@
 call plug#begin('~/.config/nvim/plugged')
-
 " Declare the list of plugins.
 Plug 'tpope/vim-sensible'
 Plug 'flazz/vim-colorschemes'
-Plug 'flrnprz/plastic.vim'
-"Plug 'google/vim-colorscheme-primary'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'jacoborus/tender.vim'
-Plug 'noahfrederick/vim-neovim-defaults'
+"Plug 'noahfrederick/vim-neovim-defaults'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-rhubarb'
-Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 Plug 'scrooloose/nerdcommenter'
@@ -55,7 +49,7 @@ set  number          " Show line numbers.
 set  mouse=a         " enable mouse
 set  laststatus=2    " statusline always on
 
-set autoread         "  autoread the file into buffer on focus
+set autoread         " autoread the file into buffer on focus
 
 " Indentation
 set   tabstop=2       " Number of spaces that a <Tab> in the file counts for.
@@ -88,32 +82,6 @@ set history=200
 
 noremap <2-LeftMouse> *
 
-:set number relativenumber
-
-" both absolute and relative line numbers are enabled by default, which produces “hybrid” line numbers. When entering insert mode, relative line numbers are turned off, leaving absolute line numbers turned on.
-:augroup numbertoggle
-:  autocmd!
-:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-:augroup END
-
-
-" Color Scheme
-"colorscheme monokai
-
-" Google light scheme
-"syntax enable
-"set t_Co=256
-"set background=light
-"colorscheme primary
-
-" PaperColor Theme
-"set t_Co=256   " This is may or may not needed.
-
-"set background=light
-"colorscheme PaperColor
-
-" Tender Theme
 " If you have vim >=8.0 or Neovim >= 0.1.5
 if (has("termguicolors"))
  set termguicolors
@@ -124,16 +92,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " Theme
 syntax enable
-"colorscheme tender
 colorscheme dracula
-
-" set lighline theme inside lightline config
-let g:lightline = { 'colorscheme': 'tender' }
-
-" set airline theme
-let g:airline_theme = 'tender'
-
-" Tender theme
 
 "Key Mappings
 let mapleader = ','

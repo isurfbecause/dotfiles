@@ -15,7 +15,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias ll="ls -lah --color | less -R"
+alias ll="ls -laht --color | less -R"
 
 alias py3="python3"
 

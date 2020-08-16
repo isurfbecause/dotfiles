@@ -98,6 +98,7 @@ colorscheme dracula
 let mapleader = ','
 nnoremap <leader>src :source $MYVIMRC<CR>
 noremap <leader>w :w<cr>
+noremap <leader>q :q<cr>
 
 " Trim trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e

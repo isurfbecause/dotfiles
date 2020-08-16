@@ -9,6 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+# I swap these depending which keyboard I am using.
 set $mod Mod4
 set $super Mod1
 
@@ -82,7 +83,7 @@ bindsym $mod+Shift+Right move right
 # split in horizontal orientation
 # Commented out because was conflicting with focus up
 #bindsym $mod+Shift+h split h
-bindsym $mod+i split h;exec notify-send 'tile horizontally'
+bindsym $mod+i split h
 
 # split in vertical orientation
 #bindsym $mod+v split v;exec notify-send 'tile vertically'
@@ -112,27 +113,34 @@ floating_modifier $mod
 # Floating Windows
 for_window [class="zoom"] floating enabled
 
-for_window [class="Spotify"] floating enabled
-for_window [class="Spotify"] mark "music", move scratchpad, resize set 1800 1280
-bindsym $mod+$super+m [con_mark="music"] scratchpad show
+# Spotify
+for_window [class="Spotify"] mark "music", floating enable, move scratchpad, resize set 1800 1280
 
-# Trying this binding out
 bindsym $mod+m [con_mark="music"] scratchpad show
 exec spotify
+# Spotify end
 
-for_window [class="Lotion"] floating enabled
-for_window [class="Lotion"] mark "notion", move scratchpad, resize set 1800 1280
-bindsym $mod+$super+n [con_mark="notion"] scratchpad show
+# Trying out the google chrome way withouth needing run lotion as an electron app
+#for_window [class="Lotion"] floating enabled
+#for_window [class="Lotion"] mark "notion", move scratchpad, resize set 1800 1280
+#bindsym $mod+$super+n [con_mark="notion"] scratchpad show
 
-# Trying this binding out
-bindsym $mod+n [con_mark="notion"] scratchpad show
-exec notion
+# Notion
+# Kill notion
+exec_always [class="^Chromium" instance="^notion.so"] kill
+
+# Start notion
+exec_always --no-startup-id ~/bin/launch-lotion.sh
+
+bindsym $mod+n [class="^Chromium" instance="^notion.so"] scratchpad show
+for_window [class="^Chromium" instance="^notion.so"] floating enable, move scratchpad
+# Notion end
 
 # Slack ws9
 for_window [class="Slack"] move to workspace $ws9
 
 # Resize Floating Windows
-bindmouse button1 resize
+bindomuse button1 resize
 
 # move floating windows with keys
 set $float_moving_px 100px
@@ -250,7 +258,7 @@ bindsym $mod+Ctrl+greater move workspace to output up
 bindsym $mod+Ctrl+less move workspace to output down
 
 # Startup
-exec_always --no-startup "~/.screenlayout/external-monitor.sh"
+exec_always --no-startup "~/.screenlayout/tb3.sh"
 
 # Background
 exec --no-startup-id feh --no-fehbg --bg-fill ~/Pictures/background.jpg
@@ -281,7 +289,7 @@ exec_always --no-startup-id killall dunst; dunst -config ~/.config/dunst/dunstrc
 #exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 
 # Klipper clipboard manager. exec_always because sometimes it doesn't start up
-exec_always --no-startup-id klipper
+exec_always --no-startup-id copyq
 
 # Keybindings
 exec_always --no-startup-id xmodmap ~/.Xmodmap

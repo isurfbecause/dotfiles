@@ -1,17 +1,18 @@
+! Using Planck EZ keyboard that let's me modify keys via ORYX keyboard configurator
 ! Swap Alt and Cmd keys.
-keycode 133 = Alt_L Meta_L
-keycode 64 = Super_L
-keycode 108 = Super_R
-clear Mod1
-clear Mod4
-add Mod1 = Alt_L Alt_R
-add Mod4 = Super_L Super_R
+!keycode 133 = Alt_L Meta_L
+!keycode 64 = Super_L
+!keycode 108 = Super_R
+!clear Mod1
+!clear Mod4
+!add Mod1 = Alt_L Alt_R
+!add Mod4 = Super_L Super_R
 
 ! Remap capslock to ctrl
-clear lock
-clear control
-add control = Control_L
-keycode 66 = Control_L NoSymbol NoSymbol NoSymbol
+!clear lock
+!clear control
+!add control = Control_L
+!keycode 66 = Control_L NoSymbol NoSymbol NoSymbol
 
 ! If you want Caps_Lock+Shift to turn on caps lock
 !keycode 66 = Control_L Caps_Lock NoSymbol NoSymbol

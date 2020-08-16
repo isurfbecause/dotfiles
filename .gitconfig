@@ -2,7 +2,7 @@
   co = checkout
   c = "!git add -A && git commit -m "
   amend = !git add -A && git commit --amend --no-edit
-  p = !git push origin $(git rev-parse --abbrev-ref HEAD)
+  p = "!git push origin $(git rev-parse --abbrev-ref HEAD) && echo 🚀;"
   n = !git checkout -b
   f = !git fetch --prune
   pl = !git pull --prune

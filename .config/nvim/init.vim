@@ -209,7 +209,11 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Ale settings
 let g:ale_linters = {'javascript': ['eslint']}
 " Ale settings
-"
+
+
+" Use JQ to format json
+noremap <leader>jo :%!jq .<cr>
+" JQ
 
 function! s:show_documentation()
   if &filetype == 'vim'

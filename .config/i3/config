@@ -242,7 +242,7 @@ bindsym $mod+Shift+u		exec --no-startup-id i3resize down
 # #---Letter Key Bindings---# #
 # Try out another key binding, I keep killing windows by accident
 #bindsym $mod+q [con_id="__focused__" instance="^(?!dropdown_).*$"] kill
-bindsym $mod+w [con_id="__focused__" instance="^(?!dropdown_).*$"] kill
+bindsym $mod+x [con_id="__focused__" instance="^(?!dropdown_).*$"] kill
 
 # startup polybar, not currently working
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh | tee /tmp/i3.log
@@ -287,7 +287,6 @@ bindsym $mod+$super+8 exec flameshot gui &
 # Dunst notifications
 # TODO: remove the alway line, after we modify dunstrc
 exec_always --no-startup-id killall dunst; dunst -config ~/.config/dunst/dunstrc
-#exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 
 # Klipper clipboard manager. exec_always because sometimes it doesn't start up
 exec_always --no-startup-id copyq

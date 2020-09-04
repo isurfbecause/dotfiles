@@ -6,3 +6,5 @@
   n = !git checkout -b
   f = !git fetch --prune
   pl = !git pull --prune
+[cola]
+	spellcheck = false

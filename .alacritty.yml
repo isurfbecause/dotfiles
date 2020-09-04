@@ -81,7 +81,7 @@ window:
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
-  history: 10000
+  history: 20000
 
   # Number of lines the viewport will move for every line scrolled when
   # scrollback is enabled (history > 0).
@@ -548,11 +548,11 @@ key_bindings:
   #- { key: End,       mods: Shift,   mode: ~Alt, action: ScrollToBottom }
 
   # Vi Mode
-  #- { key: Space,  mods: Shift|Control, mode: Vi, action: ScrollToBottom          }
-  #- { key: Space,  mods: Shift|Control,           action: ToggleViMode            }
-  #- { key: Escape,                      mode: Vi, action: ClearSelection          }
+  - { key: Space,  mods: Shift|Control, mode: Vi, action: ScrollToBottom          }
+  - { key: Space,  mods: Shift|Control,           action: ToggleViMode            }
+  - { key: Escape,                      mode: Vi, action: ClearSelection          }
   #- { key: I,                           mode: Vi, action: ScrollToBottom          }
-  #- { key: I,                           mode: Vi, action: ToggleViMode            }
+  - { key: I,                           mode: Vi, action: ToggleViMode            }
   #- { key: Y,      mods: Control,       mode: Vi, action: ScrollLineUp            }
   #- { key: E,      mods: Control,       mode: Vi, action: ScrollLineDown          }
   #- { key: G,                           mode: Vi, action: ScrollToTop             }
@@ -561,28 +561,28 @@ key_bindings:
   #- { key: F,      mods: Control,       mode: Vi, action: ScrollPageDown          }
   #- { key: U,      mods: Control,       mode: Vi, action: ScrollHalfPageUp        }
   #- { key: D,      mods: Control,       mode: Vi, action: ScrollHalfPageDown      }
-  #- { key: Y,                           mode: Vi, action: Copy                    }
+  - { key: Y,                           mode: Vi, action: Copy                    }
   #- { key: Y,                           mode: Vi, action: ClearSelection          }
   #- { key: Copy,                        mode: Vi, action: ClearSelection          }
   #- { key: V,                           mode: Vi, action: ToggleNormalSelection   }
-  #- { key: V,      mods: Shift,         mode: Vi, action: ToggleLineSelection     }
-  #- { key: V,      mods: Control,       mode: Vi, action: ToggleBlockSelection    }
-  #- { key: V,      mods: Alt,           mode: Vi, action: ToggleSemanticSelection }
+  - { key: V,      mods: Shift,         mode: Vi, action: ToggleLineSelection     }
+  - { key: V,      mods: Control,       mode: Vi, action: ToggleBlockSelection    }
+  - { key: V,      mods: Alt,           mode: Vi, action: ToggleSemanticSelection }
   #- { key: Return,                      mode: Vi, action: Open                    }
-  #- { key: K,                           mode: Vi, action: Up                      }
-  #- { key: J,                           mode: Vi, action: Down                    }
-  #- { key: H,                           mode: Vi, action: Left                    }
-  #- { key: L,                           mode: Vi, action: Right                   }
-  #- { key: Up,                          mode: Vi, action: Up                      }
-  #- { key: Down,                        mode: Vi, action: Down                    }
-  #- { key: Left,                        mode: Vi, action: Left                    }
-  #- { key: Right,                       mode: Vi, action: Right                   }
+  - { key: K,                           mode: Vi, action: Up                      }
+  - { key: J,                           mode: Vi, action: Down                    }
+  - { key: H,                           mode: Vi, action: Left                    }
+  - { key: L,                           mode: Vi, action: Right                   }
+  - { key: Up,                          mode: Vi, action: Up                      }
+  - { key: Down,                        mode: Vi, action: Down                    }
+  - { key: Left,                        mode: Vi, action: Left                    }
+  - { key: Right,                       mode: Vi, action: Right                   }
   #- { key: Key0,                        mode: Vi, action: First                   }
   #- { key: Key4,   mods: Shift,         mode: Vi, action: Last                    }
   #- { key: Key6,   mods: Shift,         mode: Vi, action: FirstOccupied           }
-  #- { key: H,      mods: Shift,         mode: Vi, action: High                    }
-  #- { key: M,      mods: Shift,         mode: Vi, action: Middle                  }
-  #- { key: L,      mods: Shift,         mode: Vi, action: Low                     }
+  - { key: H,      mods: Shift,         mode: Vi, action: High                    }
+  - { key: M,      mods: Shift,         mode: Vi, action: Middle                  }
+  - { key: L,      mods: Shift,         mode: Vi, action: Low                     }
   #- { key: B,                           mode: Vi, action: SemanticLeft            }
   #- { key: W,                           mode: Vi, action: SemanticRight           }
   #- { key: E,                           mode: Vi, action: SemanticRightEnd        }

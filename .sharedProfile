@@ -79,5 +79,5 @@ function cheetsheet() {
 alias cheatsh=cheetsheet
 
 # Launch apps like a chromium app
-alias discord='./bin/launch-discord.sh'
-alias notion='./bin/launch-notion.sh'
+alias discord='$HOME/bin/launch-discord.sh'
+alias notion='$HOME/bin/launch-notion.sh'

@@ -132,7 +132,10 @@ inoremap hh <ESC>
 
 " Terminal escape
 tnoremap jj <C-\><C-n>
-tnoremap <ESC> <C-\><C-n>
+
+"Why is this here? when I do FZF I can't and hit escape this will prevent the
+"gutter from closing
+"tnoremap <ESC> <C-\><C-n>
 
 " FZF remap
 let $FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'

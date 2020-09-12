@@ -126,28 +126,32 @@ exec spotify
 
 # Notion
 # Kill notion
+for_window [class="^Chromium" instance="^notion.so"] floating disabled
 exec_always [class="^Chromium" instance="^notion.so"] kill
 
 # Start notion
-exec_always --no-startup-id ~/bin/launch-lotion.sh
-
-bindsym $mod+n [class="^Chromium" instance="^notion.so"] scratchpad show
+exec ~/bin/launch-notion.sh
 for_window [class="^Chromium" instance="^notion.so"] floating enable, move scratchpad
+bindsym $mod+n [class="^Chromium" instance="^notion.so"] scratchpad show
 # Notion end
 
 # Google Calendar
-# Kill notion
+# Kill
+for_window [class="^Chromium" instance="^calendar.google"] floating disabled
 exec_always [class="^Chromium" instance="^calendar.google"] kill
 
-# Start notion
-exec_always --no-startup-id ~/bin/launch-lotion.sh
-
-bindsym $mod+c [class="^Chromium" instance="^calendar.google"] scratchpad show
+# Start Google Calendar
+exec_always ~/bin/launch-calendar.sh
 for_window [class="^Chromium" instance="^calendar.google"] floating enable, move scratchpad
-# Notion end
+bindsym $mod+c [class="^Chromium" instance="^calendar.google"] scratchpad show
+# Google Calendar end
 
 # Slack ws9
 for_window [class="Slack"] move to workspace $ws9
+
+# Discord ws10
+exec ~/bin/launch-discord.sh
+for_window [class="^Chromium" instance="^discord"] move to workspace $ws10
 
 # Resize Floating Windows
 bindomuse button1 resize

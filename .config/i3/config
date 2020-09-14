@@ -112,11 +112,11 @@ bindsym $mod+Shift+space floating toggle
 floating_modifier $mod
 
 # Floating Windows
-for_window [class="zoom"] floating enabled
+bindsym $mod+z [con_mark="zoom_meeting"] scratchpad show
+for_window [title="Zoom Meeting"] mark "zoom_meeting", floating enabled, move scratchpad
 
 # Spotify
 for_window [class="Spotify"] mark "music", floating enable, move scratchpad, resize set 1800 1280
-
 bindsym $mod+m [con_mark="music"] scratchpad show
 exec spotify
 # Spotify end
@@ -141,21 +141,23 @@ for_window [class="^Chromium" instance="^calendar.google"] floating disabled
 exec_always [class="^Chromium" instance="^calendar.google"] kill
 
 # Start Google Calendar
-exec_always ~/bin/launch-calendar.sh
+exec ~/bin/launch-calendar.sh
 for_window [class="^Chromium" instance="^calendar.google"] floating enable, move scratchpad
 bindsym $mod+c [class="^Chromium" instance="^calendar.google"] scratchpad show
 # Google Calendar end
 
+# Start work chromium session
+bindsym $mod+shift+w exec "~/bin/launch-work.sh"
 
-# Start work chromium
-bindsym $mod+w exec "~/bin/launch-work.sh"
+# Start personal chromium session
+bindsym $mod+shift+p exec "~/bin/launch-personal.sh"
 
-bindsym $mod+p exec "~/bin/launch-personal.sh"
-
-# Google Calendar end
+# Launch rofi emoji picker
+bindsym $mod+$super+space exec "rofimoji"
 
 # Slack ws9
 for_window [class="Slack"] move to workspace $ws9
+exec "slack"
 
 # Discord ws10
 exec ~/bin/launch-discord.sh

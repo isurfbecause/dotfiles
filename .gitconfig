@@ -8,3 +8,5 @@
   pl = !git pull --prune
 [cola]
 	spellcheck = false
+[pull]
+	ff = only

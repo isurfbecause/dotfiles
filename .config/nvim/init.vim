@@ -216,7 +216,10 @@ let g:ale_linters = {'javascript': ['eslint']}
 
 " Use JQ to format json
 noremap <leader>jo :%!jq .<cr>
-" JQ
+" JQ'
+
+" Remap to copy to system clipboard
+noremap <leader>y "+y<Esc>
 
 function! s:show_documentation()
   if &filetype == 'vim'
@@ -226,7 +229,8 @@ function! s:show_documentation()
   endif
 endfunction
 nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-
 noremap <leader>vs :vsp<cr>
 noremap <leader>hs :split<cr>
+" Resize veritcal splits TODO:Find better keybindings. Tough to keep pressing with planck keyboard
+nnoremap <Leader>= :vertical resize +5<CR>
+nnoremap <Leader>- :vertical resize -5<CR>

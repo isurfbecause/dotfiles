@@ -35,7 +35,8 @@ alias gd='git diff --color | diff-so-fancy | less -R'
 #last branch
 alias glb='git checkout @{-1}'
 #order by branches most used
-alias gb="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)'"
+alias gbl="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)'"
+alias gb="git branch"
 alias gs='git status -s'
 alias grh='git reset --hard'
 #remove branches that have already been merged into master
@@ -81,3 +82,4 @@ alias cheatsh=cheetsheet
 # Launch apps like a chromium app
 alias discord='$HOME/bin/launch-discord.sh'
 alias notion='$HOME/bin/launch-notion.sh'
+alias gcal='$HOME/bin/launch-calendar.sh'

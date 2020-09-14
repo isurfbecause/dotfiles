@@ -146,6 +146,14 @@ for_window [class="^Chromium" instance="^calendar.google"] floating enable, move
 bindsym $mod+c [class="^Chromium" instance="^calendar.google"] scratchpad show
 # Google Calendar end
 
+
+# Start work chromium
+bindsym $mod+w exec "~/bin/launch-work.sh"
+
+bindsym $mod+p exec "~/bin/launch-personal.sh"
+
+# Google Calendar end
+
 # Slack ws9
 for_window [class="Slack"] move to workspace $ws9
 
@@ -347,6 +355,5 @@ bindsym $mod+Ctrl+h workspace prev
 workspace_auto_back_and_forth yes
 bindsym $mod+Tab workspace back_and_forth
 
-
 # switch to workspace with urgent window automatically
-for_window [urgent=latest] focus
+#for_window [urgent=latest] focus

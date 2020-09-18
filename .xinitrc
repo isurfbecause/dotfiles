@@ -35,5 +35,5 @@ fi
 xset r rate 200 30
 
 nitrogen --restore &
-picom &
+#picom &
 exec i3

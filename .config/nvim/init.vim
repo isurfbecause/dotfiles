@@ -231,6 +231,10 @@ endfunction
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 noremap <leader>vs :vsp<cr>
 noremap <leader>hs :split<cr>
+
 " Resize veritcal splits TODO:Find better keybindings. Tough to keep pressing with planck keyboard
 nnoremap <Leader>= :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
+
+" Ag shortcut
+nnoremap <silent> <Leader>ag :Ag<SPACE>

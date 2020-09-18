@@ -147,10 +147,10 @@ bindsym $mod+c [class="^Chromium" instance="^calendar.google"] scratchpad show
 # Google Calendar end
 
 # Start work chromium session
-bindsym $mod+shift+w exec "~/bin/launch-work.sh"
+bindsym $mod+Ctrl+w exec "~/bin/launch-work.sh"
 
 # Start personal chromium session
-bindsym $mod+shift+p exec "~/bin/launch-personal.sh"
+bindsym $mod+Ctrl+p exec "~/bin/launch-personal.sh"
 
 # Launch rofi emoji picker
 bindsym $mod+$super+space exec "rofimoji"

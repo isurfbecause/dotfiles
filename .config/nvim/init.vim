@@ -1,14 +1,12 @@
 call plug#begin('~/.config/nvim/plugged')
 " Declare the list of plugins.
 Plug 'tpope/vim-sensible'
-Plug 'flazz/vim-colorschemes'
-"Plug 'noahfrederick/vim-neovim-defaults'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-rhubarb' "Gbrowse and :Git
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 Plug 'scrooloose/nerdcommenter'
@@ -30,8 +28,7 @@ Plug 'chrisbra/Colorizer' "Highlight hex color codes
 " Pop Up Menu Completion
 Plug 'neoclide/coc-neco'
 Plug 'Shougo/neco-vim'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Pop Up Menu End
 Plug 'ryanoasis/vim-devicons' "Add devicons in nertree
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight' "Add colors to devicons

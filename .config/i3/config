@@ -163,6 +163,9 @@ exec "slack"
 exec ~/bin/launch-discord.sh
 for_window [class="^Chromium" instance="^discord"] move to workspace $ws10
 
+# blueman
+for_window [class="Blueman-manager"] floating enable, resize set 640 480, move absolute position center
+
 # Resize Floating Windows
 bindomuse button1 resize
 

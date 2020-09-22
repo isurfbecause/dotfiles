@@ -37,7 +37,7 @@ alias glb='git checkout @{-1}'
 #order by branches most used
 alias gbl="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)'"
 alias gb="git branch"
-alias gs='git status -s'
+alias gs='git status'
 alias grh='git reset --hard'
 #remove branches that have already been merged into master
 alias gcleanbranches='git branch --merged master | grep -v "\* master" | xargs -n 1 git branch -d; git remote prune origin;'

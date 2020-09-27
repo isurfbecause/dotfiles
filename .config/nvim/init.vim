@@ -24,11 +24,16 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'zirrostig/vim-smart-swap'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'chrisbra/Colorizer' "Highlight hex color codes
+Plug 'moll/vim-node' "goTo custom node modules
 
 " Pop Up Menu Completion
 Plug 'neoclide/coc-neco'
 Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = [
+  \ 'coc-tsserver',
+  \ 'coc-json'
+  \ ]
 " Pop Up Menu End
 Plug 'ryanoasis/vim-devicons' "Add devicons in nertree
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight' "Add colors to devicons
@@ -39,8 +44,6 @@ set encoding=UTF-8
 set formatoptions-=cro "Disable automatic comment insertion
 
 set hidden           "needed for vim COC, less prompting to edit files???
-
-set cmdheight=2       " Better display for messages
 
 set  number          " Show line numbers.
 set  mouse=a         " enable mouse
@@ -136,13 +139,11 @@ tnoremap jj <C-\><C-n>
 
 " FZF remap
 let $FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+let $FZF_DEFAULT_OPTS='--reverse'
 nnoremap <C-p> :<C-u>FZF<CR>
 
 " Open Ag search
 noremap <Leader>f :Ag<CR>
-
-" Search lines in a files
-noremap <Leader>l :Lines<CR>
 
 " Searches the word under the cursor through the project tree using fzf and Ag
 noremap <Leader>d :exe ':Ag ' . expand('<cword>')<CR>
@@ -235,3 +236,7 @@ nnoremap <Leader>- :vertical resize -5<CR>
 
 " Ag shortcut
 nnoremap <silent> <Leader>ag :Ag<SPACE>
+
+" Vim Fugative
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gd :Gdiff<CR>

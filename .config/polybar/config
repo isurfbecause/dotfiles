@@ -63,9 +63,9 @@ font-2 = "mononoki Nerd Font:size=18;2"
 ;modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
 modules-left = i3
 modules-right = pulseaudio date
-modules-center = docker vpn wlan cpu memory
+modules-center = docker vpn wlan cpu memory temperature
 tray-position = right
-tray-padding = 4
+tray-padding = 8
 tray-scale = 1.0
 tray-maxsize = 28
 tray-background = #282a36
@@ -388,19 +388,20 @@ animation-discharging-framerate = 750
 type = internal/temperature
 thermal-zone = 0
 warn-temperature = 60
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input
 
 format = <ramp> <label>
 format-underline = #f50a4d
 format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
+;format-warn-underline = ${self.format-underline}
 
 label = %temperature-c%
 label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
+;label-warn-foreground = ${colors.secondary}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
 
 [module/powermenu]

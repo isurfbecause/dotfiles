@@ -83,3 +83,7 @@ alias cheatsh=cheetsheet
 alias discord='$HOME/bin/launch-discord.sh'
 alias notion='$HOME/bin/launch-notion.sh'
 alias gcal='$HOME/bin/launch-calendar.sh'
+alias vpn='$HOME/bin/launch-vpn.sh'
+
+# Dunst
+alias dunstpause='$HOME/bin/dunst-pause.sh'

@@ -133,6 +133,9 @@ alias cfa='config add'
 alias cfm='config commit -m'
 alias cfp='config push'
 
+# Reminds me to update right before I poweroff
+alias poweroff='sudo pacman -Syu; poweroff'
+
 # nvm
 # Todo: Put nvm in another file. This makes terminal load time lag by a second
 export NVM_DIR="$HOME/.nvm"

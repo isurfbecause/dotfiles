@@ -157,10 +157,8 @@ bindsym $mod+$super+space exec "rofimoji"
 
 # Slack ws9
 for_window [class="Slack"] move to workspace $ws9
-exec "slack"
 
 # Discord ws10
-exec ~/bin/launch-discord.sh
 for_window [class="^Chromium" instance="^discord"] move to workspace $ws10
 
 # blueman

@@ -124,16 +124,11 @@ exec spotify
 # Trying out the google chrome way withouth needing run lotion as an electron app
 #for_window [class="Lotion"] floating enabled
 
-# Notion
-# Kill notion
-for_window [class="^Chromium" instance="^notion.so"] floating disabled
-exec_always [class="^Chromium" instance="^notion.so"] kill
-
-# Start notion
-exec ~/bin/launch-notion.sh
-for_window [class="^Chromium" instance="^notion.so"] floating enable, move scratchpad
-bindsym $mod+n [class="^Chromium" instance="^notion.so"] scratchpad show
-# Notion end
+# Obsidian
+for_window [class="obsidian"] mark "obsidian", floating enable, move scratchpad, resize set 1700 1580
+bindsym $mod+n [con_mark="obsidian"] scratchpad show
+exec obsidian
+# Obsidian end
 
 # Google Calendar
 # Kill

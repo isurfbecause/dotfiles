@@ -4,7 +4,7 @@ IFS=$'\n\t'
 cd "$HOME"/obsidian-notes/"$USER"
 git pull
 git add .
-git commit -m "Adding notes for $(date '+%d/%m/%Y')"
 git status
+git commit -m "Adding notes for $(date '+%m/%d/%Y')"
 git push
 echo "🚀 🚀"

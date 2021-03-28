@@ -132,19 +132,19 @@ exec obsidian
 
 # Google Calendar
 # Kill
-for_window [class="^Chromium" instance="^calendar.google"] floating disabled
-exec_always [class="^Chromium" instance="^calendar.google"] kill
+for_window [class="^Google-chrome" instance="^calendar.google"] floating disabled
+exec_always [class="^Google-chrome" instance="^calendar.google"] kill
 
 # Start Google Calendar
 exec ~/bin/launch-calendar.sh
-for_window [class="^Chromium" instance="^calendar.google"] floating enable, move scratchpad
-bindsym $mod+c [class="^Chromium" instance="^calendar.google"] scratchpad show
+for_window [class="^Google-chrome" instance="^calendar.google"] floating enable, move scratchpad
+bindsym $mod+c [class="^Google-chrome" instance="^calendar.google"] scratchpad show
 # Google Calendar end
 
-# Start work chromium session
+# Start work chrom session
 bindsym $mod+Ctrl+w exec "~/bin/launch-work.sh"
 
-# Start personal chromium session
+# Start personal chrom session
 bindsym $mod+Ctrl+p exec "~/bin/launch-personal.sh"
 
 # Launch rofi emoji picker
@@ -154,7 +154,7 @@ bindsym $mod+$super+space exec "rofimoji"
 for_window [class="Slack"] move to workspace $ws9
 
 # Discord ws10
-for_window [class="^Chromium" instance="^discord"] move to workspace $ws10
+for_window [class="^Google-chrome" instance="^discord"] move to workspace $ws10
 
 # blueman
 for_window [class="Blueman-manager"] floating enable, resize set 640 480, move absolute position center

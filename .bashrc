@@ -134,7 +134,8 @@ alias cfm='config commit -m'
 alias cfp='config push'
 
 # Reminds me to update right before I poweroff
-alias poweroff='sudo pacman -Syu; poweroff'
+alias poweroff='~/bin/backup-notes.sh; sleep 1; sudo pacman -Syu; poweroff'
+alias poweroffyay='~/bin/backup-notes.sh; sleep 1; sudo pacman -Syu; yay -Syu; poweroff'
 
 # nvm
 # Todo: Put nvm in another file. This makes terminal load time lag by a second
@@ -145,3 +146,13 @@ export NVM_DIR="$HOME/.nvm"
 export PATH=/home/winston/.local/bin:$PATH
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[ -f /home/winston/mr/devops/src/wafRateLimitBlockIps/node_modules/tabtab/.completions/serverless.bash ] && . /home/winston/mr/devops/src/wafRateLimitBlockIps/node_modules/tabtab/.completions/serverless.bash
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[ -f /home/winston/mr/devops/src/wafRateLimitBlockIps/node_modules/tabtab/.completions/sls.bash ] && . /home/winston/mr/devops/src/wafRateLimitBlockIps/node_modules/tabtab/.completions/sls.bash
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[ -f /home/winston/mr/devops/src/wafRateLimitBlockIps/node_modules/tabtab/.completions/slss.bash ] && . /home/winston/mr/devops/src/wafRateLimitBlockIps/node_modules/tabtab/.completions/slss.bash

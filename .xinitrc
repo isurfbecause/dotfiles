@@ -34,6 +34,13 @@ fi
 # https://wiki.archlinux.org/index.php/Xorg/Keyboard_configuration#Adjusting_typematic_delay_and_rate
 xset r rate 200 30
 
+# Background image
 nitrogen --restore &
+
+# Compositor
 #picom &
+
+# Remove background sounds from micophone
+cadmus &
+
 exec i3

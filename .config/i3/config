@@ -111,9 +111,11 @@ bindsym $mod+Shift+space floating toggle
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# Zoom
 # Floating Windows
 bindsym $mod+z [con_mark="zoom_meeting"] scratchpad show
 for_window [title="Zoom Meeting"] mark "zoom_meeting", floating enabled, move scratchpad
+exec zoom
 
 # Spotify
 for_window [class="Spotify"] mark "music", floating enable, move scratchpad, resize set 1800 1280

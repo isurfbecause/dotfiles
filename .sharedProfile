@@ -87,3 +87,8 @@ alias vpn='$HOME/bin/launch-vpn.sh'
 
 # Dunst
 alias dunstpause='$HOME/bin/dunst-pause.sh'
+
+# xclip
+alias xclip='xclip -selection c'
+# Will I remember this more than the xclip alias?
+alias copy='xclip -selection c'

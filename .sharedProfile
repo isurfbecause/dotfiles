@@ -84,6 +84,8 @@ alias discord='$HOME/bin/launch-discord.sh'
 alias notion='$HOME/bin/launch-notion.sh'
 alias gcal='$HOME/bin/launch-calendar.sh'
 alias vpn='$HOME/bin/launch-vpn.sh'
+alias lock='$HOME/bin/i3lock.sh'
+alias lk=lock
 
 # Dunst
 alias dunstpause='$HOME/bin/dunst-pause.sh'
@@ -92,3 +94,20 @@ alias dunstpause='$HOME/bin/dunst-pause.sh'
 alias xclip='xclip -selection c'
 # Will I remember this more than the xclip alias?
 alias copy='xclip -selection c'
+
+
+#config dotfiles
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias cfs='config status'
+alias cfd='config diff | diff-so-fancy | less -R'
+alias cfa='config add'
+alias cfm='config commit -m'
+alias cfp='config push'
+
+# Reminds me to update right before I poweroff
+alias poweroff='~/bin/backup-notes.sh; sleep 1; sudo pacman -Syu; poweroff'
+alias poweroffyay='~/bin/backup-notes.sh; sleep 1; sudo pacman -Syu; yay -Syu; poweroff'
+
+alias la='ls -A'
+alias l='ls -CF'
+alias ka='killall'

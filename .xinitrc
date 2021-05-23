@@ -40,7 +40,4 @@ nitrogen --restore &
 # Compositor
 #picom &
 
-# Remove background sounds from micophone
-cadmus &
-
 exec i3

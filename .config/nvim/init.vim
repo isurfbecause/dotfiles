@@ -23,12 +23,13 @@ Plug 'posva/vim-vue'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'zirrostig/vim-smart-swap'
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'chrisbra/Colorizer' "Highlight hex color codes
-Plug 'moll/vim-node' "goTo custom node modules
+Plug 'chrisbra/Colorizer' "Highlight hex color codes Plug 'moll/vim-node' "goTo custom node modules
+Plug 'mbbill/undotree' "visualizes undo history and makes it easier to browse and switch between different undo branches
+Plug 'leafOfTree/vim-vue-plugin'
 
 " Pop Up Menu Completion
-Plug 'neoclide/coc-neco'
 Plug 'Shougo/neco-vim'
+Plug 'neoclide/coc-neco'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
   \ 'coc-tsserver',
@@ -40,21 +41,19 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight' "Add colors to devicons
 
 call plug#end()
 set encoding=UTF-8
-
+set scrolloff=8 "	Minimal number of screen lines to keep above and below the cursor.
 set formatoptions-=cro "Disable automatic comment insertion
-
 set hidden           "needed for vim COC, less prompting to edit files???
-
-set  number          " Show line numbers.
-set  mouse=a         " enable mouse
-set  laststatus=2    " statusline always on
-
+set number          " Show line numbers.
+set mouse=a         " enable mouse
+set laststatus=2    " statusline always on
 set autoread         " autoread the file into buffer on focus
-
 " Indentation
-set   tabstop=2       " Number of spaces that a <Tab> in the file counts for.
-set   shiftwidth=2    " Number of spaces to use for each step of autoindent.
-set   expandtab       " Use the appropriate number of spaces to insert a
+set tabstop=2        " Number of spaces that a <Tab> in the file counts for.
+set shiftwidth=2     " Number of spaces to use for each step of autoindent.
+set expandtab        " Use the appropriate number of spaces to insert a
+set nowrap           " no wrap
+set formatoptions-=t " No wrap when typing
 
 " <Tab>.
 set   smarttab
@@ -91,9 +90,9 @@ endif
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " Theme
-syntax enable
 colorscheme dracula
 
+syntax enable
 "Key Mappings
 let mapleader = ','
 nnoremap <leader>src :source $MYVIMRC<CR>
@@ -103,8 +102,8 @@ noremap <leader>q :q<cr>
 " Trim trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
 
-" Copy current file name
-nmap <leader>fp :let @+ = expand('%:p')<CR>
+" Copy current file path
+nmap <leader>fp :let @+ = expand('%:~')<CR>
 
 " Remove serach highlighting
 nnoremap <esc> :noh<return><esc>
@@ -125,10 +124,6 @@ noremap <leader>h <C-wr>
 
 " Navigate between buffers
 noremap <Leader>b :Buffers<CR>
-" Map jj and kk to escape and move in insert mode
-inoremap jj <ESC>
-inoremap kk <ESC>
-inoremap hh <ESC>
 
 " Terminal escape
 tnoremap jj <C-\><C-n>
@@ -140,7 +135,9 @@ tnoremap jj <C-\><C-n>
 " FZF remap
 let $FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 let $FZF_DEFAULT_OPTS='--reverse'
-nnoremap <C-p> :<C-u>FZF<CR>
+let g:fzf_preview_window = ['right:50%', 'ctrl-/']
+"nnoremap <C-p> :<C-u>FZF<CR>
+nnoremap <C-p> :Files<CR>
 
 " Open Ag search
 noremap <Leader>f :Ag<CR>
@@ -211,7 +208,6 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 let g:ale_linters = {'javascript': ['eslint']}
 " Ale settings
 
-
 " Use JQ to format json
 noremap <leader>jo :%!jq .<cr>
 " JQ'
@@ -231,8 +227,8 @@ noremap <leader>vs :vsp<cr>
 noremap <leader>hs :split<cr>
 
 " Resize veritcal splits TODO:Find better keybindings. Tough to keep pressing with planck keyboard
-nnoremap <Leader>= :vertical resize +5<CR>
-nnoremap <Leader>- :vertical resize -5<CR>
+nnoremap <Leader>l :vertical resize +20<CR>
+nnoremap <Leader>h :vertical resize -20<CR>
 
 " Ag shortcut
 nnoremap <silent> <Leader>ag :Ag<SPACE>
@@ -240,3 +236,15 @@ nnoremap <silent> <Leader>ag :Ag<SPACE>
 " Vim Fugative
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gd :Gdiff<CR>
+
+" Undo
+nnoremap <Leader>u :UndotreeToggle<CR>
+let g:undotree_RelativeTimestamp = 1
+let g:undotree_ShortIndictators = 1
+let g:undotree_HelpLine = 0
+let g:undotree_WindowLayout = 2
+
+if has ("persistent_undo")
+  set undodir=$HOME/.undodir " Make sure to initially create .undodir
+  set undofile
+endif

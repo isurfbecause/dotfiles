@@ -15,7 +15,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias ll="ls -laht --color | less -R"
+alias ll="ls -laht"
 
 alias py3="python3"
 
@@ -105,9 +105,15 @@ alias cfm='config commit -m'
 alias cfp='config push'
 
 # Reminds me to update right before I poweroff
-alias poweroff='~/bin/backup-notes.sh; sleep 1; sudo pacman -Syu; poweroff'
-alias poweroffyay='~/bin/backup-notes.sh; sleep 1; sudo pacman -Syu; yay -Syu; poweroff'
+alias poweroff='~/bin/backup-notes.sh; sleep 1; sudo pacman -Syu; sync && sudo poweroff -f'
+alias suspend='systemctl suspend'
 
 alias la='ls -A'
 alias l='ls -CF'
 alias ka='killall'
+
+# Tmux
+alias t='tmux'
+
+# Noisetorch
+alias noisetorchstart="sh ~/bin/start_noisetorch.sh"

@@ -4,7 +4,6 @@ Plug 'tpope/vim-sensible'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-rhubarb' "Gbrowse and :Git
 Plug 'tpope/vim-fugitive'
@@ -13,19 +12,20 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'ervandew/ag'
 Plug 'gabesoft/vim-ags'
 Plug 'scrooloose/nerdtree'
-Plug 'ekalinin/dockerfile.vim'
 Plug 'matze/vim-move' "Move lines
 Plug 'w0rp/ale' "Shellcheck
 Plug 'hashivim/vim-terraform'
 Plug 'arithran/vim-delete-hidden-buffers'
-Plug 'digitaltoad/vim-pug'
-Plug 'posva/vim-vue'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'zirrostig/vim-smart-swap'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'chrisbra/Colorizer' "Highlight hex color codes Plug 'moll/vim-node' "goTo custom node modules
 Plug 'mbbill/undotree' "visualizes undo history and makes it easier to browse and switch between different undo branches
-Plug 'leafOfTree/vim-vue-plugin'
+
+" Tressitter for syntax
+Plug 'haorenW1025/completion-nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'nvim-treesitter/completion-treesitter'
 
 " Pop Up Menu Completion
 Plug 'Shougo/neco-vim'
@@ -36,10 +36,11 @@ let g:coc_global_extensions = [
   \ 'coc-json'
   \ ]
 " Pop Up Menu End
-Plug 'ryanoasis/vim-devicons' "Add devicons in nertree
+"
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight' "Add colors to devicons
-
+Plug 'ryanoasis/vim-devicons' "Add devicons in nertree
 call plug#end()
+
 set encoding=UTF-8
 set scrolloff=8 "	Minimal number of screen lines to keep above and below the cursor.
 set formatoptions-=cro "Disable automatic comment insertion
@@ -52,8 +53,6 @@ set autoread         " autoread the file into buffer on focus
 set tabstop=2        " Number of spaces that a <Tab> in the file counts for.
 set shiftwidth=2     " Number of spaces to use for each step of autoindent.
 set expandtab        " Use the appropriate number of spaces to insert a
-set nowrap           " no wrap
-set formatoptions-=t " No wrap when typing
 
 " <Tab>.
 set   smarttab
@@ -93,11 +92,14 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 colorscheme dracula
 
 syntax enable
+
 "Key Mappings
 let mapleader = ','
 nnoremap <leader>src :source $MYVIMRC<CR>
 noremap <leader>w :w<cr>
 noremap <leader>q :q<cr>
+nnoremap j gj
+nnoremap k gk
 
 " Trim trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
@@ -138,26 +140,22 @@ let $FZF_DEFAULT_OPTS='--reverse'
 let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 "nnoremap <C-p> :<C-u>FZF<CR>
 nnoremap <C-p> :Files<CR>
+nnoremap <C-i> :History<CR>
 
 " Open Ag search
-noremap <Leader>f :Ag<CR>
+noremap <C-f> :Ag! <CR>
 
 " Searches the word under the cursor through the project tree using fzf and Ag
 noremap <Leader>d :exe ':Ag ' . expand('<cword>')<CR>
 
 " Terraform
 let g:terraform_align=1
-let g:terraform_fold_sections=1
+let g:terraform_fold_sections=0
 let g:terraform_remap_spacebar=1
 let g:terraform_fmt_on_save=1
 let g:terraform_commentstring='//%s'
 let g:terraform_fmt_on_save=1
 " Terraform End
-
-" Exit terminal mode
-if has('nvim')
-  tnoremap <C-v> <Esc> <Esc>
-endif
 
 " NERDtree
 let g:NERDTreeMouseMode = 3
@@ -248,3 +246,16 @@ if has ("persistent_undo")
   set undodir=$HOME/.undodir " Make sure to initially create .undodir
   set undofile
 endif
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ignore_install = {}, -- List of parsers to ignore installing
+  highlight = {
+    enable = true, -- false will disable the whole extension
+    disable = {},  -- list of language that will be disabled
+  },
+  indent = {
+    enable = true
+  }
+}
+EOF

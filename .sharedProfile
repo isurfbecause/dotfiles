@@ -99,7 +99,7 @@ alias copy='xclip -selection c'
 #config dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias cfs='config status'
-alias cfd='config diff | diff-so-fancy | less -R'
+alias cfd='config diff | diff-so-fancy'
 alias cfa='config add'
 alias cfm='config commit -m'
 alias cfp='config push'

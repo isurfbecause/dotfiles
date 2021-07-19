@@ -235,6 +235,9 @@ nnoremap <silent> <Leader>ag :Ag<SPACE>
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gd :Gdiff<CR>
 
+" Quit without writing
+cnoreabbrev qq :q!
+
 " Undo
 nnoremap <Leader>u :UndotreeToggle<CR>
 let g:undotree_RelativeTimestamp = 1

@@ -107,6 +107,7 @@ alias cfp='config push'
 # Reminds me to update right before I poweroff
 alias poweroff='~/bin/backup-notes.sh; sleep 1; sudo pacman -Syu; sync && sudo poweroff -f'
 alias suspend='systemctl suspend'
+alias reboot='sudo reboot -f'
 
 alias la='ls -A'
 alias l='ls -CF'

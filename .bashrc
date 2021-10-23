@@ -81,7 +81,7 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
+    alias ls='ls'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -135,3 +135,7 @@ export NVM_DIR="$HOME/.nvm"
 export PATH=/home/winston/.local/bin:$PATH
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Move to mac bashrc
+# Suppress The default interactive shell is now zsh.
+export BASH_SILENCE_DEPRECATION_WARNING=1

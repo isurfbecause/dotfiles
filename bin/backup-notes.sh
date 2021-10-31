@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 IFS=$'\n\t'
-cd "$HOME"/obsidian-notes/"$USER"
+cd "$HOME"/notes
 git pull
 git add .
 git status

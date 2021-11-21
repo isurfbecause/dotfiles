@@ -46,6 +46,7 @@ alias gcleanbranches='git branch --merged master | grep -v "\* master" | xargs -
 alias gdf='git clean -df'
 alias gpm='git pull origin master'
 alias gco='git checkout $(git branch | fzf)'
+alias ga='git ls-files -m -o --exclude-standard | fzf -m --print0 | xargs -0 -o -t git add -p'
 
 # Doesnt' work on mac
 #alias ls="command ls -G --color"

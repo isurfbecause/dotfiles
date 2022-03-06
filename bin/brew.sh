@@ -22,6 +22,7 @@ brew install --cask alfred
 brew install --cask visual-studio-code
 brew install --cask iterm2
 brew install nvim
+brew install diff-so-fancy
 # brew install docker
 # brew install terraform
 

@@ -123,3 +123,7 @@ alias t='tmux'
 
 # Noisetorch
 alias noisetorchstart="sh ~/bin/start_noisetorch.sh"
+
+# Github commandline
+# Open Github repo in browser
+alias ghv="gh repo view -w"

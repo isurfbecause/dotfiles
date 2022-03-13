@@ -4,7 +4,7 @@ brew update
 brew upgrade
 
 # Dotfiles
-brew install yadm
+#brew install yadm
 
 # Browsers
 brew install --cask google-chrome
@@ -23,6 +23,7 @@ brew install --cask visual-studio-code
 brew install --cask iterm2
 brew install nvim
 brew install diff-so-fancy
+brew install gh
 # brew install docker
 # brew install terraform
 

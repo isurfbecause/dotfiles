@@ -135,7 +135,8 @@ export NVM_DIR="$HOME/.nvm"
 
 export PATH=/home/winston/.local/bin:$PATH
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+#[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -z "$ZSH_NAME" ] && [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # Move to mac bashrc
 # Suppress The default interactive shell is now zsh.

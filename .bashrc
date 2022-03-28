@@ -141,3 +141,5 @@ export PATH=/home/winston/.local/bin:$PATH
 # Move to mac bashrc
 # Suppress The default interactive shell is now zsh.
 export BASH_SILENCE_DEPRECATION_WARNING=1
+
+export PATH="/usr/local/opt/awscli@1/bin:$PATH"

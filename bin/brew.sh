@@ -21,10 +21,17 @@ brew install --cask alfred
 # Coding
 brew install --cask visual-studio-code
 brew install --cask iterm2
-brew install nvim
 brew install diff-so-fancy
 brew install gh
-# brew install docker
+brew install circleci
+brew install awscli@1
+brew install yarn
+
+# Python 3
+#brew install python3 && cp /usr/local/bin/python3 /usr/local/bin/python
+
+brew install nvim
+brew install the_silver_searcher
 # brew install terraform
 
 # Screenshot Tool

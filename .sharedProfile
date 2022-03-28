@@ -17,7 +17,7 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ll="ls -laht"
 
-alias py3="python3"
+alias pip="pip3"
 
 # Change Directories
 alias p="cd ~/projects"
@@ -26,7 +26,7 @@ alias dotfiles="cd /Volumes/code/dotfiles"
 alias ops="cd ~/projects/ops"
 
 #alias
-alias srcbash='source ~/.bashrc'
+alias srczsh='source ~/.zshrc'
 alias hl='history | less'
 
 #git
@@ -127,3 +127,14 @@ alias noisetorchstart="sh ~/bin/start_noisetorch.sh"
 # Github commandline
 # Open Github repo in browser
 alias ghv="gh repo view -w"
+
+# Terraform
+alias tf='terraform'
+alias tfp='terraform plan'
+alias tfa='terraform apply'
+
+# CircleCI
+alias cciv='circleci config validate'
+
+# Newer version of grep
+alias grep='ggrep'

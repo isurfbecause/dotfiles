@@ -21,6 +21,7 @@ Plug 'zirrostig/vim-smart-swap'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'chrisbra/Colorizer' "Highlight hex color codes Plug 'moll/vim-node' "goTo custom node modules
 Plug 'mbbill/undotree' "visualizes undo history and makes it easier to browse and switch between different undo branches
+Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' } "Python languageserver
 
 " Tressitter for syntax
 Plug 'haorenW1025/completion-nvim'
@@ -140,7 +141,10 @@ let $FZF_DEFAULT_OPTS='--reverse'
 let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 "nnoremap <C-p> :<C-u>FZF<CR>
 nnoremap <C-p> :Files<CR>
-nnoremap <C-i> :History<CR>
+
+" TODO: recent files, need to find a better binding that doesn't clash with
+" default next
+"nnoremap <C-i> :History<CR>
 
 " Open Ag search
 noremap <C-f> :Ag! <CR>
@@ -195,7 +199,6 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 " Find symbol of current document
 nnoremap <silent> go :<C-u>CocList outline<cr>
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
 nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
@@ -232,7 +235,7 @@ nnoremap <Leader>h :vertical resize -20<CR>
 nnoremap <silent> <Leader>ag :Ag<SPACE>
 
 " Vim Fugative
-nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gs :Git<CR>
 nnoremap <Leader>gd :Gdiff<CR>
 
 " Quit without writing

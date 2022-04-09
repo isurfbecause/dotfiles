@@ -31,7 +31,7 @@ alias hl='history | less'
 
 #git
 alias gsl='git log -p -1'
-alias gom='git checkout master'
+alias gom='git checkout main'
 alias gd='git diff --color | diff-so-fancy | less -R'
 #last branch
 alias glb='git checkout @{-1}'
@@ -41,7 +41,7 @@ alias gb="git branch"
 alias gs='git status'
 alias grh='git reset --hard'
 #remove branches that have already been merged into master
-alias gcleanbranches='git branch --merged master | grep -v "\* master" | xargs -n 1 git branch -d; git remote prune origin;'
+alias gcleanbranches='git branch --merged main | grep -v "\* master" | xargs -n 1 git branch -d; git remote prune origin;'
 #remove files that are not tracked by git
 alias gdf='git clean -df'
 alias gpm='git pull origin master'

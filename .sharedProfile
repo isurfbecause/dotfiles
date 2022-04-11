@@ -1,32 +1,25 @@
-# PS1='/\W$(__git_ps1 " (%s)") '
-# PS1='\n$RED$GREEN\w $RESETCOLOR$GREENBOLD\/\W$(__git_ps1 " (%s)")'
 
-parse_git_branch() {
+get_current_branch() {
      #git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
     git branch | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
 
-#Paths
-export PATH=$PATH:/data
-export PATH=$PATH:~/.chefdk/gem/ruby/2.1.0/bin
-
 # Easier navigation: .., ..., ~ and -
 alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ll="ls -laht"
+
+alias ls="ls --color"
+alias ll="ls -laht --color"
 
 alias pip="pip3"
+alias python="python3"
 
 # Change Directories
 alias p="cd ~/projects"
 alias dl="cd ~/Downloads"
-alias dotfiles="cd /Volumes/code/dotfiles"
-alias ops="cd ~/projects/ops"
 
 #alias
 alias srczsh='source ~/.zshrc'
+alias zshedit='vim ~/.zshrc'
 alias hl='history | less'
 
 #git
@@ -48,33 +41,12 @@ alias gpm='git pull origin master'
 alias gco='git checkout $(git branch | fzf)'
 alias ga='git ls-files -m -o --exclude-standard | fzf -m --print0 | xargs -0 -o -t git add -p'
 
-# Doesnt' work on mac
-#alias ls="command ls -G --color"
-
-#ip address
-alias ip="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
-
-# Node
-alias killnode="killall node"
-
-# Python
-alias python2="python2.7"
-
 # nvim
 export VISUAL=nvim
 alias vim=nvim
 alias vi=nvim
 export VIMCONFIG=~/.config/nvim
 export VIMDATA=~/.local/share/nvim
-
-# Background image
-export DESKTOP_BACKGROUND_IMAGE=~/Pictures/surfing-background.jpg
-
-#if [ $(uname) == 'Linux' ]; then
-#  alias open="xdg-open"
-#fi
-
-alias g=git
 
 # Cheetsheet lookup
 function cheetsheet() {
@@ -91,15 +63,6 @@ alias vpn='$HOME/Downloads/eng-scripts/vpn.sh'
 alias lock='$HOME/bin/i3lock.sh'
 alias lk=lock
 
-# Dunst
-alias dunstpause='$HOME/bin/dunst-pause.sh'
-
-# xclip
-alias xclip='xclip -selection c'
-# Will I remember this more than the xclip alias?
-alias copy='xclip -selection c'
-
-
 #config dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias cfs='config status'
@@ -107,22 +70,6 @@ alias cfd='config diff | diff-so-fancy'
 alias cfa='config add'
 alias cfm='config commit -m'
 alias cfp='config push'
-
-# Reminds me to update right before I poweroff
-#alias poweroff='~/bin/backup-notes.sh; sleep 1; sudo pacman -Syu; sync && sudo poweroff -f'
-alias sleepnow='/Volumes/code/dotfiles/bin/backup-notes.sh; pmset sleepnow'
-alias suspend='systemctl suspend'
-alias reboot='sudo reboot -f'
-
-alias la='ls -A'
-alias l='ls -CF'
-alias ka='killall'
-
-# Tmux
-alias t='tmux'
-
-# Noisetorch
-alias noisetorchstart="sh ~/bin/start_noisetorch.sh"
 
 # Github commandline
 # Open Github repo in browser

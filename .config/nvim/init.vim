@@ -4,43 +4,41 @@ Plug 'tpope/vim-sensible'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-rhubarb' "Gbrowse and :Git
+"Plug 'tpope/vim-surround'
+"Plug 'tpope/vim-rhubarb' "Gbrowse and :Git
 Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-signify'
-Plug 'scrooloose/nerdcommenter'
+"Plug 'tpope/vim-dotenv'
+"Plug 'mhinz/vim-signify'
 Plug 'ervandew/ag'
 Plug 'gabesoft/vim-ags'
 Plug 'scrooloose/nerdtree'
 Plug 'matze/vim-move' "Move lines
-Plug 'w0rp/ale' "Shellcheck
+
+"Plug 'w0rp/ale' "Shellcheck
 Plug 'hashivim/vim-terraform'
 Plug 'arithran/vim-delete-hidden-buffers'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'zirrostig/vim-smart-swap'
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'chrisbra/Colorizer' "Highlight hex color codes Plug 'moll/vim-node' "goTo custom node modules
+Plug 'dracula/vim'
 Plug 'mbbill/undotree' "visualizes undo history and makes it easier to browse and switch between different undo branches
-Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' } "Python languageserver
 
-" Tressitter for syntax
+"🌲 Tressitter for syntax
 Plug 'haorenW1025/completion-nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'nvim-treesitter/completion-treesitter'
+Plug 'lewis6991/gitsigns.nvim'
 
-" Pop Up Menu Completion
-Plug 'Shougo/neco-vim'
-Plug 'neoclide/coc-neco'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = [
-  \ 'coc-tsserver',
-  \ 'coc-json'
-  \ ]
-" Pop Up Menu End
-"
+source ~/.config/nvim/plugins/nerdcommenter.vim
+source ~/.config/nvim/plugins/coc.vim
+"source ~/.config/nvim/plugins/coc-jedi.vim
+"source ~/.config/nvim/plugins/colorizer.vim
+
+" vim-devicons for nerdtree
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight' "Add colors to devicons
 Plug 'ryanoasis/vim-devicons' "Add devicons in nertree
 call plug#end()
+
+colorscheme dracula
 
 set encoding=UTF-8
 set scrolloff=8 "	Minimal number of screen lines to keep above and below the cursor.
@@ -48,7 +46,7 @@ set formatoptions-=cro "Disable automatic comment insertion
 set hidden           "needed for vim COC, less prompting to edit files???
 set number          " Show line numbers.
 set mouse=a         " enable mouse
-set laststatus=2    " statusline always on
+set laststatus=3    " statusline always on
 set autoread         " autoread the file into buffer on focus
 " Indentation
 set tabstop=2        " Number of spaces that a <Tab> in the file counts for.
@@ -64,6 +62,8 @@ set   backspace=2     " Backspace through whitespace
 set   ignorecase      " Ignore case in search patterns.
 set   smartcase       " Case sensitive if pattern contains upper case chars
 set   hlsearch        " Highlight all search matches
+hi Search guibg=peru guifg=wheat
+
 set   incsearch       " Highlight search matches while typing
 
 " Window Splits
@@ -89,9 +89,6 @@ endif
 " For Neovim 0.1.3 and 0.1.4
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
-" Theme
-colorscheme dracula
-
 syntax enable
 
 "Key Mappings
@@ -101,6 +98,7 @@ noremap <leader>w :w<cr>
 noremap <leader>q :q<cr>
 nnoremap j gj
 nnoremap k gk
+nnoremap gf :edit <cfile><CR>
 
 " Trim trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
@@ -119,7 +117,6 @@ nnoremap <esc> :noh<return><esc>
 nnoremap tl :tabnext<CR>
 nnoremap th :tabprev<CR>
 nnoremap tn :tabnew<CR>
-nnoremap td :tabclose<CR>
 
 " Move cursor between windows
 noremap <leader>l <C-wl>
@@ -128,9 +125,6 @@ noremap <leader>h <C-wr>
 " Navigate between buffers
 noremap <Leader>b :Buffers<CR>
 
-" Terminal escape
-tnoremap jj <C-\><C-n>
-
 "Why is this here? when I do FZF I can't and hit escape this will prevent the
 "gutter from closing
 "tnoremap <ESC> <C-\><C-n>
@@ -138,7 +132,10 @@ tnoremap jj <C-\><C-n>
 " FZF remap
 let $FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 let $FZF_DEFAULT_OPTS='--reverse'
-let g:fzf_preview_window = ['right:50%', 'ctrl-/']
+"let g:fzf_preview_window = ['right:50%', 'ctrl-/']
+let g:fzf_preview_window = []
+
+"
 "nnoremap <C-p> :<C-u>FZF<CR>
 nnoremap <C-p> :Files<CR>
 
@@ -169,22 +166,6 @@ let NERDTreeShowHidden=1
 nnoremap <leader>nf :NERDTreeFind<CR>
 nnoremap <leader>nt :NERDTreeToggle<CR>
 
-
-" CoC settings
-" Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=300
-
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-
-" <TAB> maps to next completion
-inoremap <silent><expr> <TAB>
-  \ pumvisible() ? "\<C-n>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ coc#refresh()
-" <S-TAB> maps to previous completion
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1] =~# '\s'
@@ -203,7 +184,6 @@ nnoremap <silent> go :<C-u>CocList outline<cr>
 nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" CoC settings
 
 " Ale settings
 let g:ale_linters = {'javascript': ['eslint']}
@@ -216,18 +196,18 @@ noremap <leader>jo :%!jq .<cr>
 " Remap to copy to system clipboard
 noremap <leader>y "+y<Esc>
 
-function! s:show_documentation()
-  if &filetype == 'vim'
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+"function! s:show_documentation()
+  "if &filetype == 'vim'
+    "execute 'h '.expand('<cword>')
+  "else
+    "call CocAction('doHover')
+  "endif
+"endfunction
+"nnoremap <silent> K :call <SID>show_documentation()<CR>
 noremap <leader>vs :vsp<cr>
 noremap <leader>hs :split<cr>
 
-" Resize veritcal splits TODO:Find better keybindings. Tough to keep pressing with planck keyboard
+" Resize vertical splits TODO:Find better keybindings. Tough to keep pressing with planck keyboard
 nnoremap <Leader>l :vertical resize +20<CR>
 nnoremap <Leader>h :vertical resize -20<CR>
 
@@ -264,4 +244,51 @@ require'nvim-treesitter.configs'.setup {
     enable = true
   }
 }
+
+-- Gitsigns
+require('gitsigns').setup {
+  signs = {
+    add          = {hl = 'GitSignsAdd'   , text = '+', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
+    change       = {hl = 'GitSignsChange', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+    delete       = {hl = 'GitSignsDelete', text = '', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+    topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+    changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+  },
+  signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs` numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
+  linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
+  word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
+  watch_gitdir = {
+    interval = 1000,
+    follow_files = true
+  },
+  attach_to_untracked = true,
+  current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+  current_line_blame_opts = {
+    virt_text = true,
+    virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+    delay = 1000,
+    ignore_whitespace = false,
+  },
+  current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
+  sign_priority = 6,
+  update_debounce = 100,
+  status_formatter = nil, -- Use default
+  max_file_length = 40000,
+  preview_config = {
+    -- Options passed to nvim_open_win
+    border = 'single',
+    style = 'minimal',
+    relative = 'cursor',
+    row = 0,
+    col = 1
+  },
+  yadm = {
+    enable = false
+  },
+}
+
 EOF
+
+" Change background color for coc Pmenu. Default color is hard to read
+hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#24242c gui=NONE
+hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=NONE guibg=#6272a4 gui=NONE

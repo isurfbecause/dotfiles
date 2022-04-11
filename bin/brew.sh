@@ -34,6 +34,9 @@ brew install nvim
 brew install the_silver_searcher
 # brew install terraform
 
+# Fast Node Manager (faster than nvm on startup)
+# brew install fnm
+
 # Screenshot Tool
 brew install --cask cleanshot
 

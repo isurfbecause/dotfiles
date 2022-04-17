@@ -26,12 +26,16 @@ brew install gh
 brew install circleci
 brew install awscli@1
 brew install yarn
+brew install --cask dbeaver-community
+
+brew install shellcheck
 
 # Python 3
 #brew install python3 && cp /usr/local/bin/python3 /usr/local/bin/python
 
 brew install nvim
-brew install the_silver_searcher
+#brew install the_silver_searcher
+brew install ripgrep
 # brew install terraform
 
 # Fast Node Manager (faster than nvm on startup)

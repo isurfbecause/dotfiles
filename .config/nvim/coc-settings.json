@@ -6,7 +6,20 @@
     "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/circleciconfig.json": [".config.yml"]
   },
   "json.enable": true,
+  "languageserver": {
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh"],
+      "ignoredRootPaths": ["~"]
+    }
+  },
+  "diagnostic-languageserver.filetypes": {
+    "sh": "shellcheck"
+  },
   "sh.enable": true,
+  "sh.highlightParsingErrors": true,
+  "sh.globPattern": "",
   "jedi.enable": true,
   "jedi.startupMessage": false,
   "jedi.markupKindPreferred": "plaintext",

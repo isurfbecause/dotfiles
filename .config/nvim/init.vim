@@ -1,26 +1,24 @@
 call plug#begin('~/.config/nvim/plugged')
 " Declare the list of plugins.
 Plug 'tpope/vim-sensible'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+source ~/.config/nvim/plugins/fzf.vim
+source ~/.config/nvim/plugins/ag.vim
+source ~/.config/nvim/plugins/vim-visual-multi.vim
+source ~/.config/nvim/plugins/lualine.vim
+
 Plug 'christoomey/vim-tmux-navigator'
-"Plug 'tpope/vim-surround'
-"Plug 'tpope/vim-rhubarb' "Gbrowse and :Git
 Plug 'tpope/vim-fugitive'
-"Plug 'tpope/vim-dotenv'
-"Plug 'mhinz/vim-signify'
-Plug 'ervandew/ag'
 Plug 'gabesoft/vim-ags'
 Plug 'scrooloose/nerdtree'
-Plug 'matze/vim-move' "Move lines
-
-"Plug 'w0rp/ale' "Shellcheck
 Plug 'hashivim/vim-terraform'
-Plug 'arithran/vim-delete-hidden-buffers'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'zirrostig/vim-smart-swap'
 Plug 'dracula/vim'
 Plug 'mbbill/undotree' "visualizes undo history and makes it easier to browse and switch between different undo branches
+
+"Plug 'tpope/vim-dotenv'
+"Plug 'tpope/vim-surround'
+"Plug 'arithran/vim-delete-hidden-buffers'
 
 "🌲 Tressitter for syntax
 Plug 'haorenW1025/completion-nvim'
@@ -30,16 +28,15 @@ Plug 'lewis6991/gitsigns.nvim'
 
 source ~/.config/nvim/plugins/nerdcommenter.vim
 source ~/.config/nvim/plugins/coc.vim
-"source ~/.config/nvim/plugins/coc-jedi.vim
-"source ~/.config/nvim/plugins/colorizer.vim
+source ~/.config/nvim/plugins/coc-jedi.vim
+source ~/.config/nvim/plugins/colorizer.vim
 
 " vim-devicons for nerdtree
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight' "Add colors to devicons
-Plug 'ryanoasis/vim-devicons' "Add devicons in nertree
+Plug 'ryanoasis/vim-devicons' "Add devicons in nerdtree
 call plug#end()
 
 colorscheme dracula
-
 set encoding=UTF-8
 set scrolloff=8 "	Minimal number of screen lines to keep above and below the cursor.
 set formatoptions-=cro "Disable automatic comment insertion
@@ -125,29 +122,9 @@ noremap <leader>h <C-wr>
 " Navigate between buffers
 noremap <Leader>b :Buffers<CR>
 
-"Why is this here? when I do FZF I can't and hit escape this will prevent the
-"gutter from closing
-"tnoremap <ESC> <C-\><C-n>
-
-" FZF remap
-let $FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
-let $FZF_DEFAULT_OPTS='--reverse'
-"let g:fzf_preview_window = ['right:50%', 'ctrl-/']
-let g:fzf_preview_window = []
-
-"
-"nnoremap <C-p> :<C-u>FZF<CR>
-nnoremap <C-p> :Files<CR>
-
 " TODO: recent files, need to find a better binding that doesn't clash with
 " default next
 "nnoremap <C-i> :History<CR>
-
-" Open Ag search
-noremap <C-f> :Ag! <CR>
-
-" Searches the word under the cursor through the project tree using fzf and Ag
-noremap <Leader>d :exe ':Ag ' . expand('<cword>')<CR>
 
 " Terraform
 let g:terraform_align=1
@@ -208,11 +185,8 @@ noremap <leader>vs :vsp<cr>
 noremap <leader>hs :split<cr>
 
 " Resize vertical splits TODO:Find better keybindings. Tough to keep pressing with planck keyboard
-nnoremap <Leader>l :vertical resize +20<CR>
-nnoremap <Leader>h :vertical resize -20<CR>
-
-" Ag shortcut
-nnoremap <silent> <Leader>ag :Ag<SPACE>
+"nnoremap <Leader>l :vertical resize +20<CR>
+"nnoremap <Leader>h :vertical resize -20<CR>
 
 " Vim Fugative
 nnoremap <Leader>gs :Git<CR>
@@ -285,6 +259,46 @@ require('gitsigns').setup {
   yadm = {
     enable = false
   },
+  on_attach = function(bufnr)
+    local gs = package.loaded.gitsigns
+
+    local function map(mode, l, r, opts)
+      opts = opts or {}
+      opts.buffer = bufnr
+      vim.keymap.set(mode, l, r, opts)
+    end
+
+    -- Navigation
+    map('n', ']c', function()
+      if vim.wo.diff then return ']c' end
+      vim.schedule(function() gs.next_hunk() end)
+      return '<Ignore>'
+    end, {expr=true})
+
+    map('n', '[c', function()
+      if vim.wo.diff then return '[c' end
+      vim.schedule(function() gs.prev_hunk() end)
+      return '<Ignore>'
+    end, {expr=true})
+
+    -- Actions
+    map({'n', 'v'}, '<leader>hs', ':Gitsigns stage_hunk<CR>')
+    map({'n', 'v'}, '<leader>hr', ':Gitsigns reset_hunk<CR>')
+    map('n', '<leader>hN', gs.next_hunk)
+    map('n', '<leader>hP', gs.prev_hunk)
+    map('n', '<leader>hS', gs.stage_buffer)
+    map('n', '<leader>hu', gs.undo_stage_hunk)
+    map('n', '<leader>hR', gs.reset_buffer)
+    map('n', '<leader>hp', gs.preview_hunk)
+    map('n', '<leader>hb', function() gs.blame_line{full=true} end)
+    map('n', '<leader>tb', gs.toggle_current_line_blame)
+    map('n', '<leader>hd', gs.diffthis)
+    map('n', '<leader>hD', function() gs.diffthis('~') end)
+    map('n', '<leader>td', gs.toggle_deleted)
+
+    -- Text object
+    map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+  end
 }
 
 EOF

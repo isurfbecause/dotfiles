@@ -28,9 +28,6 @@ source ~/.sharedProfile
 # Fast Node Manager
 eval "$(fnm env --use-on-cd)"
 
-# FZF
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # AWS cli
 export PATH="/usr/local/opt/awscli@1/bin:$PATH"
 

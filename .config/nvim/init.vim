@@ -5,11 +5,12 @@ source ~/.config/nvim/plugins/fzf.vim
 source ~/.config/nvim/plugins/ag.vim
 source ~/.config/nvim/plugins/vim-visual-multi.vim
 source ~/.config/nvim/plugins/lualine.vim
+"source ~/.config/nvim/plugins/nvim-tree.vim
+source ~/.config/nvim/plugins/nerdtree.vim
 
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-fugitive'
 Plug 'gabesoft/vim-ags'
-Plug 'scrooloose/nerdtree'
 Plug 'hashivim/vim-terraform'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'zirrostig/vim-smart-swap'
@@ -31,9 +32,6 @@ source ~/.config/nvim/plugins/coc.vim
 source ~/.config/nvim/plugins/coc-jedi.vim
 source ~/.config/nvim/plugins/colorizer.vim
 
-" vim-devicons for nerdtree
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight' "Add colors to devicons
-Plug 'ryanoasis/vim-devicons' "Add devicons in nerdtree
 call plug#end()
 
 colorscheme dracula
@@ -306,3 +304,10 @@ EOF
 " Change background color for coc Pmenu. Default color is hard to read
 hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#24242c gui=NONE
 hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=NONE guibg=#6272a4 gui=NONE
+
+
+" after a re-source, fix syntax matching issues (concealing brackets):
+if exists('g:loaded_webdevicons')
+    call webdevicons#refresh()
+endif
+

@@ -5,8 +5,8 @@ source ~/.config/nvim/plugins/fzf.vim
 source ~/.config/nvim/plugins/ag.vim
 source ~/.config/nvim/plugins/vim-visual-multi.vim
 source ~/.config/nvim/plugins/lualine.vim
-"source ~/.config/nvim/plugins/nvim-tree.vim
 source ~/.config/nvim/plugins/nerdtree.vim
+source ~/.config/nvim/plugins/undotree.vim
 
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-fugitive'
@@ -15,7 +15,6 @@ Plug 'hashivim/vim-terraform'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'zirrostig/vim-smart-swap'
 Plug 'dracula/vim'
-Plug 'mbbill/undotree' "visualizes undo history and makes it easier to browse and switch between different undo branches
 
 "Plug 'tpope/vim-dotenv'
 "Plug 'tpope/vim-surround'
@@ -25,7 +24,7 @@ Plug 'mbbill/undotree' "visualizes undo history and makes it easier to browse an
 Plug 'haorenW1025/completion-nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'nvim-treesitter/completion-treesitter'
-Plug 'lewis6991/gitsigns.nvim'
+Plug 'lewis6991/gitsigns.nvim' " I had trouble moving this plugin to another file with lua settings below.
 
 source ~/.config/nvim/plugins/nerdcommenter.vim
 source ~/.config/nvim/plugins/coc.vim
@@ -193,18 +192,6 @@ nnoremap <Leader>gd :Gdiff<CR>
 " Quit without writing
 cnoreabbrev qq :q!
 
-" Undo
-nnoremap <Leader>u :UndotreeToggle<CR>
-let g:undotree_RelativeTimestamp = 1
-let g:undotree_ShortIndictators = 1
-let g:undotree_HelpLine = 0
-let g:undotree_WindowLayout = 2
-
-if has ("persistent_undo")
-  set undodir=$HOME/.undodir " Make sure to initially create .undodir
-  set undofile
-endif
-
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ignore_install = {}, -- List of parsers to ignore installing
@@ -300,14 +287,3 @@ require('gitsigns').setup {
 }
 
 EOF
-
-" Change background color for coc Pmenu. Default color is hard to read
-hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#24242c gui=NONE
-hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=NONE guibg=#6272a4 gui=NONE
-
-
-" after a re-source, fix syntax matching issues (concealing brackets):
-if exists('g:loaded_webdevicons')
-    call webdevicons#refresh()
-endif
-

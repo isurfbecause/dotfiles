@@ -7,11 +7,10 @@ source ~/.config/nvim/plugins/vim-visual-multi.vim
 source ~/.config/nvim/plugins/lualine.vim
 source ~/.config/nvim/plugins/nerdtree.vim
 source ~/.config/nvim/plugins/undotree.vim
+source ~/.config/nvim/plugins/vim-terraform.vim
 
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-fugitive'
 Plug 'gabesoft/vim-ags'
-Plug 'hashivim/vim-terraform'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'zirrostig/vim-smart-swap'
 Plug 'dracula/vim'
@@ -45,44 +44,31 @@ set autoread         " autoread the file into buffer on focus
 " Indentation
 set tabstop=2        " Number of spaces that a <Tab> in the file counts for.
 set shiftwidth=2     " Number of spaces to use for each step of autoindent.
-set expandtab        " Use the appropriate number of spaces to insert a
-
-" <Tab>.
-set   smarttab
-set   autoindent
-set   backspace=2     " Backspace through whitespace
+set expandtab        " Use the appropriate number of spaces to insert a <Tab>.
+set smarttab
+set autoindent
+set backspace=2     " Backspace through whitespace
 
 " Search
-set   ignorecase      " Ignore case in search patterns.
-set   smartcase       " Case sensitive if pattern contains upper case chars
-set   hlsearch        " Highlight all search matches
-hi Search guibg=peru guifg=wheat
-
-set   incsearch       " Highlight search matches while typing
+set ignorecase      " Ignore case in search patterns.
+set smartcase       " Case sensitive if pattern contains upper case chars
+set hlsearch        " Highlight all search matches
+set incsearch       " Highlight search matches while typing
 
 " Window Splits
 set   splitbelow
 set   splitright      " better defaults for opening new splits!
 
-" Copy to osx clipboard
-""set clipboard+=unnamedplus
-
-" Autocomplete menu like bash when pressing tab
-set wildmode=longest,list
+" Autocomplete menu like :b <TAB>
+set wildmenu
+set wildmode=longest:full,full
 
 " Increase command history
 set history=200
 
 noremap <2-LeftMouse> *
 
-" If you have vim >=8.0 or Neovim >= 0.1.5
-if (has("termguicolors"))
- set termguicolors
-endif
-
-" For Neovim 0.1.3 and 0.1.4
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
+set termguicolors
 syntax enable
 
 "Key Mappings
@@ -90,8 +76,15 @@ let mapleader = ','
 nnoremap <leader>src :source $MYVIMRC<CR>
 noremap <leader>w :w<cr>
 noremap <leader>q :q<cr>
+
+" Quit without writing
+cnoreabbrev qq :q!
+
+" Move up/down wrapped text
 nnoremap j gj
 nnoremap k gk
+
+"Go to file even if it doesn't exist
 nnoremap gf :edit <cfile><CR>
 
 " Trim trailing whitespace
@@ -103,34 +96,19 @@ nmap <leader>fp :let @+ = expand('%:~')<CR>
 " Remove serach highlighting
 nnoremap <esc> :noh<return><esc>
 
-" go backward and forward through our command history with filtering
-"cnoremap <C-p> <Up>
-"cnoremap <C-n> <Down>
-
 " Tab navigation
 nnoremap tl :tabnext<CR>
 nnoremap th :tabprev<CR>
 nnoremap tn :tabnew<CR>
 
 " Move cursor between windows
-noremap <leader>l <C-wl>
-noremap <leader>h <C-wr>
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " Navigate between buffers
 noremap <Leader>b :Buffers<CR>
-
-" TODO: recent files, need to find a better binding that doesn't clash with
-" default next
-"nnoremap <C-i> :History<CR>
-
-" Terraform
-let g:terraform_align=1
-let g:terraform_fold_sections=0
-let g:terraform_remap_spacebar=1
-let g:terraform_fmt_on_save=1
-let g:terraform_commentstring='//%s'
-let g:terraform_fmt_on_save=1
-" Terraform End
 
 " NERDtree
 let g:NERDTreeMouseMode = 3
@@ -170,14 +148,7 @@ noremap <leader>jo :%!jq .<cr>
 " Remap to copy to system clipboard
 noremap <leader>y "+y<Esc>
 
-"function! s:show_documentation()
-  "if &filetype == 'vim'
-    "execute 'h '.expand('<cword>')
-  "else
-    "call CocAction('doHover')
-  "endif
-"endfunction
-"nnoremap <silent> K :call <SID>show_documentation()<CR>
+" Split windows
 noremap <leader>vs :vsp<cr>
 noremap <leader>hs :split<cr>
 
@@ -188,9 +159,6 @@ noremap <leader>hs :split<cr>
 " Vim Fugative
 nnoremap <Leader>gs :Git<CR>
 nnoremap <Leader>gd :Gdiff<CR>
-
-" Quit without writing
-cnoreabbrev qq :q!
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
@@ -285,5 +253,4 @@ require('gitsigns').setup {
     map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
   end
 }
-
 EOF

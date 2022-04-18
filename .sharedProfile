@@ -70,6 +70,8 @@ alias cfd='config diff | diff-so-fancy'
 alias cfa='config add'
 alias cfm='config commit -m'
 alias cfp='config push'
+# Add all modified dot files
+alias cfaa='config ls-files -m | xargs echo config add'
 
 # Github commandline
 # Open Github repo in browser

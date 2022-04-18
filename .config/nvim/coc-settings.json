@@ -17,6 +17,7 @@
   "diagnostic-languageserver.filetypes": {
     "sh": "shellcheck"
   },
+  "diagnostic.checkCurrentLine": true,
   "sh.enable": true,
   "sh.highlightParsingErrors": true,
   "sh.globPattern": "",

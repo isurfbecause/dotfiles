@@ -6,20 +6,12 @@
   n = !git checkout -b
   f = !git fetch --prune
   pl = !git pull --prune
-[cola]
-	spellcheck = false
 [pull]
 	ff = only
 [user]
 	name = Winston Yee
 	email = winsyee@gmail.com
 [core]
-	excludesfile = /Users/winstonyee/.gitignore_global
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+	excludesfile = ~/.gitignore_global
 [commit]
 	template = /Users/winstonyee/.stCommitMsg

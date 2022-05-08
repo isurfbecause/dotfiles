@@ -3,9 +3,6 @@
 brew update
 brew upgrade
 
-# Dotfiles
-#brew install yadm
-
 # Browsers
 brew install --cask google-chrome
 
@@ -19,27 +16,32 @@ brew install --cask alfred
 #brew install --cask fantastical
 
 # Coding
-brew install --cask visual-studio-code
-brew install --cask iterm2
+#brew install --cask visual-studio-code
+#brew install --cask iterm2
+#brew install gh
+brew install --cask kitty
 brew install diff-so-fancy
-brew install gh
 brew install circleci
 brew install awscli@1
-brew install yarn
-brew install --cask dbeaver-community
 
+brew install --cask 1password/tap/1password-cli
+
+# DB GUI
+brew install --cask dbeaver-community
 brew install shellcheck
 
 # Python 3
 #brew install python3 && cp /usr/local/bin/python3 /usr/local/bin/python
 
 brew install nvim
-#brew install the_silver_searcher
+brew install the_silver_searcher
 brew install ripgrep
 # brew install terraform
 
+# Node.js
 # Fast Node Manager (faster than nvm on startup)
 # brew install fnm
+brew install yarn
 
 # Screenshot Tool
 brew install --cask cleanshot

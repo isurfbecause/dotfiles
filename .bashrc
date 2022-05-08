@@ -31,6 +31,8 @@ eval "$(fnm env --use-on-cd)"
 # AWS cli
 export PATH="/usr/local/opt/awscli@1/bin:$PATH"
 
-
 # Paths
 export PATH=/home/winston/.local/bin:$PATH
+
+# TMUX
+[[ -n $TMUX ]] && export TERM="xterm-256color"

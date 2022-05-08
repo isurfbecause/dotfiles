@@ -9,7 +9,7 @@ brew install --cask google-chrome
 # Email
 brew install --cask superhuman
 
-# Spotlight and clipboard
+# Alfred - Spotlight and clipboard manager
 brew install --cask alfred
 
 # Calendar
@@ -78,11 +78,11 @@ brew install --cask spotify
 brew install --cask pandora
 
 # Linux Tools
-brew install --cask alfred
 brew install fzf
 brew install htop
 brew install jq
 brew install tree
+brew install wget
 
 # Key mapping
 brew install --cask karabiner-elements

@@ -33,20 +33,18 @@ alias gbl="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --forma
 alias gb="git branch"
 alias gs='git status'
 alias grh='git reset --hard'
-#remove branches that have already been merged into master
+#remove branches that have already been merged into main
 alias gcleanbranches='git branch --merged main | grep -v "\* master" | xargs -n 1 git branch -d; git remote prune origin;'
-#remove files that are not tracked by git
-alias gdf='git clean -df'
-alias gpm='git pull origin master'
 alias gco='git checkout $(git branch | fzf)'
-alias ga='git ls-files -m -o --exclude-standard | fzf -m --print0 | xargs -0 -o -t git add -p'
+alias ga='git ls-files -m -o --exclude-standard | fzf -m --print0 | xargs -0 -o -t git add'
 
 # nvim
 export VISUAL=nvim
-alias vim=nvim
-alias vi=nvim
 export VIMCONFIG=~/.config/nvim
 export VIMDATA=~/.local/share/nvim
+alias vim=nvim
+alias vi=nvim
+alias v=nvim
 
 # Cheetsheet lookup
 function cheetsheet() {
@@ -70,8 +68,6 @@ alias cfd='config diff | diff-so-fancy'
 alias cfa='config add'
 alias cfm='config commit -m'
 alias cfp='config push'
-# Add all modified dot files
-alias cfaa='config ls-files -m | xargs echo config add'
 
 # Github commandline
 # Open Github repo in browser
@@ -87,3 +83,6 @@ alias cciv='circleci config validate'
 
 # Newer version of grep
 alias grep='ggrep'
+
+# Tmux
+alias srctmux='tmux source-file ~/.tmux.conf'

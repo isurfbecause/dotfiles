@@ -29,6 +29,7 @@ source ~/.config/nvim/plugins/nerdcommenter.vim
 source ~/.config/nvim/plugins/coc.vim
 source ~/.config/nvim/plugins/coc-jedi.vim
 source ~/.config/nvim/plugins/colorizer.vim
+Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 
@@ -100,12 +101,6 @@ nnoremap <esc> :noh<return><esc>
 nnoremap tl :tabnext<CR>
 nnoremap th :tabprev<CR>
 nnoremap tn :tabnew<CR>
-
-" Move cursor between windows
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
 
 " Navigate between buffers
 noremap <Leader>b :Buffers<CR>

@@ -1,3 +1,7 @@
+#!/bin/bash
+# Supress warning in macos
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -8,9 +12,14 @@ HISTCONTROL=ignoreboth
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
+SHELL=/bin/bash
 
+# PS1 Prompt customization
+_MAGENTA=$(tput setaf 5)
+_GREEN=$(tput setaf 2)
+_RESET=$(tput sgr0)
 
-PROMPT='%F{magenta} %~ %F{green}%f '
+export PS1='${_MAGENTA} \w ${_GREEN} ${_RESET}'
 
 # some more ls aliases
 alias la='ls -A'
@@ -36,3 +45,18 @@ export PATH=/home/winston/.local/bin:$PATH
 
 # TMUX
 [[ -n $TMUX ]] && export TERM="xterm-256color"
+
+# GO
+export GOPATH=$HOME/go
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
+export PATH=$PATH:/usr/local/bin/go
+export GO111MODULE="on"
+
+# FZF
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_COMMAND='fd --type file --hidden'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+source ~/.welcome_techrc

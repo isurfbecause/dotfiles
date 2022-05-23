@@ -1,50 +1,57 @@
-
-get_current_branch() {
-     #git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-    git branch | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
-}
-
-# Easier navigation: .., ..., ~ and -
-alias ..="cd .."
-
+# Easier navigation
 alias ls="ls --color"
 alias ll="ls -laht --color"
 
-alias pip="pip3"
-alias python="python3"
-
 # Change Directories
+alias ..="cd .."
 alias p="cd ~/projects"
 alias dl="cd ~/Downloads"
 
-#alias
+#alias Zsh
+# TODO: if shell is zsh
 alias srczsh='source ~/.zshrc'
 alias zshedit='vim ~/.zshrc'
 alias hl='history | less'
 
+#bash
+alias editbash='vim ~/.bashrc && source ~/.bashrc'
+alias srcbash='source ~/.bashrc'
+
 #git
-alias gsl='git log -p -1'
-alias gom='git checkout main'
-alias gd='git diff --color | diff-so-fancy | less -R'
-#last branch
-alias glb='git checkout @{-1}'
-#order by branches most used
-alias gbl="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)'"
-alias gb="git branch"
-alias gs='git status'
-alias grh='git reset --hard'
-#remove branches that have already been merged into main
-alias gcleanbranches='git branch --merged main | grep -v "\* master" | xargs -n 1 git branch -d; git remote prune origin;'
-alias gco='git checkout $(git branch | fzf)'
-alias ga='git ls-files -m -o --exclude-standard | fzf -m --print0 | xargs -0 -o -t git add'
+if $(which -s git); then
+  get_current_branch() {
+       #git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+      git branch | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+  }
+
+  alias gcb='get_current_branch'
+  alias gsl='git log -p -1'
+  alias gom='git checkout main'
+  alias gd='git diff --color | diff-so-fancy | less -R'
+  #last branch
+  alias glb='git checkout @{-1}'
+  #order by branches most used
+  alias gbl="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)'"
+  alias gb="git branch"
+  alias gs='git status'
+  alias grh='git reset --hard'
+  #remove branches that have already been merged into main
+  alias gcleanbranches='git branch --merged main | grep -v "\* master" | xargs -n 1 git branch -d; git remote prune origin;'
+  alias gco='git checkout $(git branch | fzf)'
+  alias ga='git ls-files -m -o --exclude-standard | fzf -m --print0 | xargs -0 -o -t git add'
+else
+  echo "git is not found"
+fi
 
 # nvim
-export VISUAL=nvim
-export VIMCONFIG=~/.config/nvim
-export VIMDATA=~/.local/share/nvim
-alias vim=nvim
-alias vi=nvim
-alias v=nvim
+if $(which -s nvim); then
+  export VISUAL=nvim
+  export VIMCONFIG=~/.config/nvim
+  export VIMDATA=~/.local/share/nvim
+  alias v=nvim
+  alias vim=v
+  alias vi=v
+fi
 
 # Cheetsheet lookup
 function cheetsheet() {
@@ -54,14 +61,16 @@ function cheetsheet() {
 alias cheatsh=cheetsheet
 
 # Launch apps like a chromium app
-alias discord='$HOME/bin/launch-discord.sh'
-alias notion='$HOME/bin/launch-notion.sh'
-alias gcal='$HOME/bin/launch-calendar.sh'
-alias vpn='$HOME/Downloads/eng-scripts/vpn.sh'
-alias lock='$HOME/bin/i3lock.sh'
-alias lk=lock
+if $(uname | grep --quiet 'linux'); then
+  alias discord='$HOME/bin/launch-discord.sh'
+  alias notion='$HOME/bin/launch-notion.sh'
+  alias gcal='$HOME/bin/launch-calendar.sh'
+  alias vpn='$HOME/Downloads/eng-scripts/vpn.sh'
+  alias lock='$HOME/bin/i3lock.sh'
+fi
 
 #config dotfiles
+# TODO: if .cfg folder not found output "Install dotfiles repo not found"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias cfs='config status'
 alias cfd='config diff | diff-so-fancy'
@@ -71,18 +80,32 @@ alias cfp='config push'
 
 # Github commandline
 # Open Github repo in browser
-alias ghv="gh repo view -w"
+if $(which -s gh); then
+  alias ghv="gh repo view -w"
+fi
 
 # Terraform
-alias tf='terraform'
-alias tfp='terraform plan'
-alias tfa='terraform apply'
+if $(which -s terraform); then
+  alias tf='terraform'
+  alias tfp='tf plan'
+  alias tfa='tf apply'
+fi
 
 # CircleCI
-alias cciv='circleci config validate'
+if $(which -s circleci); then
+  alias cciv='circleci config validate'
+fi
 
-# Newer version of grep
-alias grep='ggrep'
+# Newer version of grep on Darwin
+if $(uname | grep --quiet 'Darwin'); then
+  alias grep='ggrep'
+fi
 
 # Tmux
-alias srctmux='tmux source-file ~/.tmux.conf'
+if $(which -s tmux); then
+  alias srctmux='tmux source-file ~/.tmux.conf'
+fi
+
+# Python
+alias pip="pip3"
+alias python="python3"

@@ -8,6 +8,7 @@ source ~/.config/nvim/plugins/lualine.vim
 source ~/.config/nvim/plugins/nerdtree.vim
 source ~/.config/nvim/plugins/undotree.vim
 source ~/.config/nvim/plugins/vim-terraform.vim
+source ~/.config/nvim/plugins/go.nvim.vim
 
 Plug 'tpope/vim-fugitive'
 Plug 'gabesoft/vim-ags'
@@ -248,4 +249,8 @@ require('gitsigns').setup {
     map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
   end
 }
+
+-- Go language support
+require('go').setup()
+
 EOF

@@ -12,10 +12,30 @@
       "args": ["start"],
       "filetypes": ["sh"],
       "ignoredRootPaths": ["~"]
+    },
+    "terraform": {
+			"command": "terraform-ls",
+			"args": ["serve"],
+			"filetypes": [
+				"terraform",
+				"tf"
+			],
+			"initializationOptions": {},
+      "settings": {}
+    },
+    "golang": {
+      "command": "go-langserver",
+      "rootPatterns": ["go.work", "go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"],
+      "initializationOptions": {
+      "gocodeCompletionEnabled": true,
+      "diagnosticsEnabled": true,
+      "lintTool": "golint"
+    }
     }
   },
   "diagnostic-languageserver.filetypes": {
-    "sh": "shellcheck"
+    "sh": "shellcheck -x"
   },
   "diagnostic.checkCurrentLine": true,
   "sh.enable": true,

@@ -97,7 +97,7 @@ if $(which -s circleci); then
 fi
 
 # Newer version of grep on Darwin
-if $(uname | grep --quiet 'Darwin'); then
+if $(which -s ggrep); then
   alias grep='ggrep'
 fi
 

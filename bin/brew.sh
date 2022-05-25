@@ -36,11 +36,12 @@ brew install shellcheck
 brew install nvim
 brew install the_silver_searcher
 brew install ripgrep
+brew install tmux
 # brew install terraform
 
 # Node.js
 # Fast Node Manager (faster than nvm on startup)
-# brew install fnm
+brew install fnm
 brew install yarn
 
 # Screenshot Tool
@@ -93,5 +94,10 @@ brew install --cask karabiner-elements
 
 # System
 # brew install --cask istat-menus
+
+# Fonts
+brew tap homebrew/cask-fonts
+brew install --cask font-mononoki-nerd-font
+brew tap homebrew/cask-fonts && brew install font-Fira-Code-nerd-font
 
 echo "Will need to install akiflow, roamresearch,  manually"

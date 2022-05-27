@@ -24,10 +24,11 @@ brew install diff-so-fancy
 brew install circleci
 brew install awscli@1
 
-brew install --cask 1password/tap/1password-cli
-
 # DB GUI
 brew install --cask dbeaver-community
+
+
+# Bash linting
 brew install shellcheck
 
 # Python 3

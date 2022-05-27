@@ -7,6 +7,9 @@ alias ..="cd .."
 alias p="cd ~/projects"
 alias dl="cd ~/Downloads"
 
+# clear
+alias c='clear'
+
 #alias Zsh
 # TODO: if shell is zsh
 alias srczsh='source ~/.zshrc'
@@ -21,7 +24,8 @@ alias srcbash='source ~/.bashrc'
 if $(which -s git); then
   get_current_branch() {
        #git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-      git branch | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+      CURRENT_BRANCH=$(git branch | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+      echo " $CURRENT_BRANCH"
   }
 
   alias gcb='get_current_branch'

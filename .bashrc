@@ -34,12 +34,6 @@ source ~/.sharedProfile
 
 # Apps
 
-# Fast Node Manager
-eval "$(fnm env --use-on-cd)"
-
-# AWS cli
-export PATH="/usr/local/opt/awscli@1/bin:$PATH"
-
 # Paths
 export PATH=/home/winston/.local/bin:$PATH
 
@@ -50,7 +44,6 @@ export PATH=/home/winston/.local/bin:$PATH
 export GOPATH=$HOME/go
 export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:/usr/local/bin/go
 export GO111MODULE="on"
 
@@ -58,5 +51,11 @@ export GO111MODULE="on"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='fd --type file --hidden'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# AWS cli
+export PATH="/opt/homebrew/opt/awscli@1/bin:$PATH"
 
 source ~/.welcome_techrc

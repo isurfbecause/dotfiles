@@ -4,12 +4,11 @@ Plug 'tpope/vim-sensible'
 source ~/.config/nvim/plugins/fzf.vim
 source ~/.config/nvim/plugins/ag.vim
 source ~/.config/nvim/plugins/vim-visual-multi.vim
-source ~/.config/nvim/plugins/lualine.vim
+"source ~/.config/nvim/plugins/lualine.vim
 source ~/.config/nvim/plugins/nerdtree.vim
 source ~/.config/nvim/plugins/undotree.vim
 source ~/.config/nvim/plugins/vim-terraform.vim
-source ~/.config/nvim/plugins/go.nvim.vim
-
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'gabesoft/vim-ags'
 Plug 'editorconfig/editorconfig-vim'
@@ -250,7 +249,36 @@ require('gitsigns').setup {
   end
 }
 
--- Go language support
-require('go').setup()
+-- lualine
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'auto',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {},
+    always_divide_middle = false,
+    globalstatus = false,
+  },
+  sections = {
+    lualine_a = {},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'filetype'},
+    --lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  extensions = {}
+}
 
 EOF

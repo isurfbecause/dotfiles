@@ -1,6 +1,8 @@
 # Easier navigation
-alias ls="ls --color"
-alias ll="ls -laht --color"
+alias ls="ls -F --color"
+alias ll="ls -lahtF --color"
+alias lss="ls -F --color | sort"
+alias lst="ls -tF --color | head"
 
 # Change Directories
 alias ..="cd .."
@@ -109,6 +111,10 @@ fi
 if $(which -s tmux); then
   alias srctmux='tmux source-file ~/.tmux.conf'
 fi
+
+# Attach to tmux session or create a new one
+alias ta='tmux attach || tmux new-session'
+alias tn='tmux new-session'
 
 # Python
 alias pip="pip3"

@@ -38,7 +38,7 @@ source ~/.sharedProfile
 export PATH=/home/winston/.local/bin:$PATH
 
 # TMUX
-[[ -n $TMUX ]] && export TERM="xterm-256color"
+[[ -n $TMUX ]] && export TERM="screen-256color"
 
 # GO
 export GOPATH=$HOME/go

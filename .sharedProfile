@@ -9,6 +9,9 @@ alias ..="cd .."
 alias p="cd ~/projects"
 alias dl="cd ~/Downloads"
 
+# Copy current directory to clipboard
+alias pwdc='pwd | pbcopy'
+
 # clear
 alias c='clear'
 
@@ -113,8 +116,8 @@ if $(which -s tmux); then
 fi
 
 # Attach to tmux session or create a new one
-alias ta='tmux attach || tmux new-session'
-alias tn='tmux new-session'
+alias tma='tmux attach || tmux new-session'
+alias tmn='tmux new-session'
 
 # Python
 alias pip="pip3"

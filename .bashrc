@@ -25,13 +25,6 @@ export PS1='${_MAGENTA} \w ${_GREEN} ${_RESET}'
 alias la='ls -A'
 alias l='ls -CF'
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-source ~/.sharedProfile
-
 # Apps
 
 # Paths
@@ -48,7 +41,7 @@ export PATH=$PATH:/usr/local/bin/go
 export GO111MODULE="on"
 
 # FZF
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f $HOME/.fzf.bash ] && source $HOME/.fzf.bash
 export FZF_DEFAULT_COMMAND='fd --type file --hidden'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
@@ -58,4 +51,11 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # AWS cli
 export PATH="/opt/homebrew/opt/awscli@1/bin:$PATH"
 
-source ~/.welcome_techrc
+source $HOME/.welcome_techrc
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+source $HOME/.sharedProfile

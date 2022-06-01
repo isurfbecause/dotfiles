@@ -64,10 +64,10 @@ fi
 
 # Cheetsheet lookup
 function cheetsheet() {
-  curl cht.sh/$1 | less -R
+  open https://devhints.io/$1
 }
 
-alias cheatsh=cheetsheet
+alias cheat=cheetsheet
 
 # Launch apps like a chromium app
 if $(uname | grep --quiet 'linux'); then

@@ -1,4 +1,3 @@
-#!/bin/bash
 # Supress warning in macos
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
@@ -19,7 +18,7 @@ _MAGENTA=$(tput setaf 5)
 _GREEN=$(tput setaf 2)
 _RESET=$(tput sgr0)
 
-export PS1='${_MAGENTA} \w ${_GREEN} ${_RESET}'
+export PS1='\[${_MAGENTA} \w ${_GREEN} ${_RESET}\]'
 
 # some more ls aliases
 alias la='ls -A'

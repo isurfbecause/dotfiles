@@ -2,6 +2,7 @@
   "suggest.triggerAfterInsertEnter": true,
   "suggest.minTriggerInputLength": 2,
   "yaml.enable": true,
+  "yaml.schemaStore.enable": true,
   "yaml.schemas": {
     "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/circleciconfig.json": [".config.yml"]
   },

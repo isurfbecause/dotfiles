@@ -5883,6 +5883,10 @@
                                         "apple_vendor_top_case_key_code": "keyboard_fn"
                                     }
                                 ],
+                                "parameters": {
+                                   "basic.to_if_alone_threshold_milliseconds": 0,
+                                    "basic.to_if_held_down_threshold_milliseconds": 100
+                                },
                                 "type": "basic"
                             }
                         ]

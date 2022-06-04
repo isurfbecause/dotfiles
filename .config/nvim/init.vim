@@ -9,6 +9,7 @@ source ~/.config/nvim/plugins/nerdtree.vim
 source ~/.config/nvim/plugins/undotree.vim
 source ~/.config/nvim/plugins/vim-terraform.vim
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 Plug 'tpope/vim-fugitive'
 Plug 'gabesoft/vim-ags'
 Plug 'editorconfig/editorconfig-vim'
@@ -261,12 +262,29 @@ require('lualine').setup {
     globalstatus = false,
   },
   sections = {
-    lualine_a = {},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
-    lualine_x = {'filetype'},
+    lualine_a = {'branch', 'diff', 'diagnostics'},
+    lualine_b = {
+      {
+        'filename',
+        path = 1,
+        shorting_target = 50,
+        symbols = {
+        modified = ' [+]',      -- Text to show when the file is modified.
+        readonly = ' [-]',      -- Text to show when the file is non-modifiable or readonly.
+        unnamed = '[No Name]', -- Text to show for unnamed buffers.
+      }
+      }
+    },
+    lualine_c = {},
+    lualine_x = {
+      {
+        'filetype',
+        colored = true,
+        icon_only = false
+      }
+    },
     --lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
+    lualine_y = {},
     lualine_z = {'location'}
   },
   inactive_sections = {
@@ -277,8 +295,31 @@ require('lualine').setup {
     lualine_y = {},
     lualine_z = {}
   },
-  tabline = {},
-  extensions = {}
+  tabline = {
+    lualine_a = {
+    {
+      'buffers',
+      show_filename_only = false,   -- Shows shortened relative path when set to false.
+      hide_filename_extension = false,   -- Hide filename extension when set to true.
+      show_modified_status = true, -- Shows indicator when the buffer is modified.
+      mode = 0, -- 0: Shows buffer name
+      max_length = vim.o.columns * 2 / 3, -- Maximum width of buffers component,
+
+      symbols = {
+        modified = ' ●',      -- Text to show when the buffer is modified
+        alternate_file = '#', -- Text to show to identify the alternate file
+        directory =  '',     -- Text to show when the buffer is a directory
+      },
+    }
+  }
+  }
+}
+
+-- bufferline
+require("bufferline").setup{
+  options = {
+    indicator_icon = '',
+  }
 }
 
 EOF

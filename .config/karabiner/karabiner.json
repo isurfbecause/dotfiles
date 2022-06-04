@@ -5865,6 +5865,27 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "Fn to Escape on single press, Fn on press and hold.",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "apple_vendor_top_case_key_code": "keyboard_fn"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "escape"
+                                    }
+                                ],
+                                "to_if_held_down": [
+                                    {
+                                        "apple_vendor_top_case_key_code": "keyboard_fn"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },
@@ -5997,16 +6018,6 @@
             },
             "selected": true,
             "simple_modifications": [
-                {
-                    "from": {
-                        "apple_vendor_top_case_key_code": "keyboard_fn"
-                    },
-                    "to": [
-                        {
-                            "key_code": "escape"
-                        }
-                    ]
-                },
                 {
                     "from": {
                         "key_code": "caps_lock"

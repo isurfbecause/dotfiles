@@ -1,10 +1,30 @@
 #!/usr/bin/bash
 
+# Check if program is not installed
+# P is Program
+function not_installed() {
+  P=$1
+  if ! command -v $P &> /dev/null; then
+     echo "$P found, not installing"
+  else
+    printf "\n$P not found.\nInstalling $P..."
+  fi
+}
+
+if not_installed brew; then
+  open https://brew.sh/
+  exit
+fi
+
 brew update
 brew upgrade
 
 # Browsers
-brew install --cask google-chrome
+P=google-chrome
+if not_installed $P; then
+  brew install --cask $P
+  exit
+fi
 
 # Email
 brew install --cask superhuman
@@ -27,6 +47,8 @@ brew install awscli@1
 # DB GUI
 brew install --cask dbeaver-community
 
+# Security
+#brew install bitwarden
 
 # Bash linting
 brew install shellcheck
@@ -39,6 +61,9 @@ brew install the_silver_searcher
 brew install ripgrep
 brew install tmux
 # brew install terraform
+
+# Graphs for terraform
+#brew install graphviz
 
 # Node.js
 # Fast Node Manager (faster than nvm on startup)
@@ -64,7 +89,8 @@ brew install --cask mem
 
 # VPN
 brew install --cask nordvpn
-brew install openvpn
+brew install --cask openvpn-connect
+brew install --cask tunnelblick
 
 # Communication
 brew install --cask slack
@@ -80,6 +106,7 @@ brew install --cask spotify
 brew install --cask pandora
 
 # Linux Tools
+
 brew install fzf
 brew install htop
 brew install jq
@@ -94,7 +121,7 @@ brew install --cask karabiner-elements
 # brew install --cask micro-snitch
 
 # System
-# brew install --cask istat-menus
+brew install --cask istat-menus
 
 # Fonts
 brew tap homebrew/cask-fonts

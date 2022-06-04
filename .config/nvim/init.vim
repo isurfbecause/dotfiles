@@ -156,6 +156,12 @@ noremap <leader>hs :split<cr>
 nnoremap <Leader>gs :Git<CR>
 nnoremap <Leader>gd :Gdiff<CR>
 
+"Nerdtree after a re-source, fix syntax matching issues (concealing brackets):
+if exists('g:loaded_webdevicons')
+    call webdevicons#refresh()
+endif
+
+" Lua
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ignore_install = {}, -- List of parsers to ignore installing

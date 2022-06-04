@@ -33,6 +33,7 @@ if $(which -s git); then
       echo " $CURRENT_BRANCH"
   }
 
+  alias gsld='git diff HEAD^ HEAD'
   alias gcb='get_current_branch'
   alias gsl='git log -p -1'
   alias gom='git checkout main'
@@ -68,6 +69,14 @@ function cheetsheet() {
 }
 
 alias cheat=cheetsheet
+
+function get_ip() {
+  IP=$(curl -s ifconfig.me)
+  echo $IP
+  echo $IP | pbcopy
+}
+
+alias ip=get_ip
 
 # Launch apps like a chromium app
 if $(uname | grep --quiet 'linux'); then
@@ -122,3 +131,7 @@ alias tmn='tmux new-session'
 # Python
 alias pip="pip3"
 alias python="python3"
+
+if $(which -s fnm); then
+  eval "$(fnm env --use-on-cd)"
+fi

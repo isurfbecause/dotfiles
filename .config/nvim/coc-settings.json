@@ -22,7 +22,9 @@
 				"tf"
 			],
 			"initializationOptions": {},
-      "settings": {}
+      "settings": {
+        "prefillRequiredFields": false
+      }
     },
     "golang": {
       "command": "go-langserver",

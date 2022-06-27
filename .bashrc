@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Supress warning in macos
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
@@ -12,6 +14,9 @@ HISTCONTROL=ignoreboth
 HISTSIZE=1000
 HISTFILESIZE=2000
 SHELL=/bin/bash
+
+# TMUX
+[[ -n $TMUX ]] && export TERM="screen-256color"
 
 # PS1 Prompt customization
 _MAGENTA=$(tput setaf 5)
@@ -29,9 +34,6 @@ alias l='ls -CF'
 # Paths
 export PATH=/home/winston/.local/bin:$PATH
 
-# TMUX
-[[ -n $TMUX ]] && export TERM="screen-256color"
-
 # GO
 export GOPATH=$HOME/go
 export GOROOT=/usr/local/opt/go/libexec
@@ -40,7 +42,7 @@ export PATH=$PATH:/usr/local/bin/go
 export GO111MODULE="on"
 
 # FZF
-[ -f $HOME/.fzf.bash ] && source $HOME/.fzf.bash
+[ -f "$HOME/.fzf.bash" ] && source "$HOME/.fzf.bash"
 export FZF_DEFAULT_COMMAND='fd --type file --hidden'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
@@ -50,11 +52,11 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # AWS cli
 export PATH="/opt/homebrew/opt/awscli@1/bin:$PATH"
 
-source $HOME/.welcome_techrc
+source "$HOME/.welcome_techrc"
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-source $HOME/.sharedProfile
+source "$HOME/.sharedProfile"

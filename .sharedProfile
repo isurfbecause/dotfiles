@@ -119,6 +119,10 @@ if $(which -s ggrep); then
   alias grep='ggrep'
 fi
 
+# Ripgrep
+# Search hidden files and no case
+alias rgh='rg --hidden -i'
+
 # Tmux
 if $(which -s tmux); then
   alias srctmux='tmux source-file ~/.tmux.conf'

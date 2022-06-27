@@ -4,10 +4,10 @@
 # P is Program
 function not_installed() {
   P=$1
-  if ! command -v $P &> /dev/null; then
+  if ! command -v "$P" &> /dev/null; then
      echo "$P found, not installing"
   else
-    printf "\n$P not found.\nInstalling $P..."
+    printf "\n%s not found.\nInstalling %s..." "$P" "$P"
   fi
 }
 
@@ -25,6 +25,8 @@ if not_installed $P; then
   brew install --cask $P
   exit
 fi
+
+brew install firefox
 
 # Email
 brew install --cask superhuman
@@ -72,6 +74,9 @@ brew install yarn
 
 # Screenshot Tool
 brew install --cask cleanshot
+
+# Pixel Ruler
+#brew install --cask pixelsnap
 
 # Mac window manager
 brew install --cask rectangle

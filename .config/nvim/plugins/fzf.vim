@@ -10,7 +10,6 @@ let $FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 " --reverse - sort by alpha on top
 let $FZF_DEFAULT_OPTS='--reverse'
-"let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 let g:fzf_preview_window = []
 
 "
@@ -19,7 +18,4 @@ nnoremap <C-p> :Files<CR>
 
 " Searches the word under the cursor through the project tree using fzf and Ag
 noremap <Leader>d :exe ':Ag ' . expand('<cword>')<CR>
-
-
-
 noremap <Leader>d :call fzf#run({'source': 'git ls-files', 'sink': 'e'})

@@ -36,6 +36,7 @@ if $(which -s git); then
   alias gsld='git diff HEAD^ HEAD'
   alias gcb='get_current_branch'
   alias gsl='git log -p -1'
+  alias gslf='git show --pretty="" --name-only  $(git rev-parse HEAD)'
   alias gom='git checkout main'
   alias gd='git diff --color | diff-so-fancy | less -R'
   #last branch
@@ -120,8 +121,8 @@ if $(which -s ggrep); then
 fi
 
 # Ripgrep
-# Search hidden files and no case
-alias rgh='rg --hidden -i'
+# Search hidden files and no case, ignore folders
+alias rgh='rg --hidden -i -g '!{.git}''
 
 # Tmux
 if $(which -s tmux); then

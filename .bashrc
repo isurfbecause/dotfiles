@@ -54,6 +54,9 @@ export PATH="/opt/homebrew/opt/awscli@1/bin:$PATH"
 
 source "$HOME/.welcome_techrc"
 
+# VSCode
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.

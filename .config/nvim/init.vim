@@ -34,7 +34,15 @@ Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 
-colorscheme dracula
+" ColorSchema
+ let g:dracula_italic = 0
+ colorscheme dracula
+ highlight Normal ctermbg=None
+
+ if (has("termguicolors"))
+   set termguicolors
+ endif
+set background=dark
 set encoding=UTF-8
 set scrolloff=8 "	Minimal number of screen lines to keep above and below the cursor.
 set formatoptions-=cro "Disable automatic comment insertion
@@ -94,6 +102,9 @@ autocmd BufWritePre * %s/\s\+$//e
 
 " Copy current file path
 nmap <leader>fp :let @+ = expand('%:~')<CR>
+
+" Wait up to 100ms after Esc for special key
+set ttimeoutlen=100
 
 " Remove serach highlighting
 nnoremap <esc> :noh<return><esc>

@@ -22,6 +22,11 @@ yabai -m config mouse_action2 resize
 
 yabai -m mouse_drop_action swap
 
+# floating windows are always on top (default: off)
+yabai -m config window_topmost on
+
+# Will not work with SIP
+# window opacity (default: off)
 
 #Disable specfic swap
 
@@ -36,3 +41,4 @@ yabai -m rule --add app="Akko Cloud Driver" manage=off
 yabai -m rule --add app="Messages" manage=off
 yabai -m rule --add app="1Password" manage=off
 yabai -m rule --add app="Superhuman" manage=off
+yabai -m rule --add app="Preview" manage=off

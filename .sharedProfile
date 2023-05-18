@@ -109,6 +109,7 @@ if $(which -s terraform); then
   alias tf='terraform'
   alias tfp='tf plan'
   alias tfa='tf apply'
+  alias tfaa='echo -e "Terraform apply with auto-approve!!!\n\n"; sleep 1; tf apply -auto-approve'
 fi
 
 # CircleCI

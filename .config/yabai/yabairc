@@ -36,9 +36,5 @@ yabai -m rule --add app=" Karabiner-Elements$" manage=off
 yabai -m rule --add app="Finder" manage=off
 yabai -m rule --add app="Finder" manage=off
 yabai -m rule --add app="CleanShot X" manage=off
-yabai -m rule --add app="Roam Research" manage=off
-yabai -m rule --add app="Akko Cloud Driver" manage=off
-yabai -m rule --add app="Messages" manage=off
 yabai -m rule --add app="1Password" manage=off
-yabai -m rule --add app="Superhuman" manage=off
 yabai -m rule --add app="Preview" manage=off

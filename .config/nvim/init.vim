@@ -159,9 +159,9 @@ noremap <leader>y "+y<Esc>
 noremap <leader>vs :vsp<cr>
 noremap <leader>hs :split<cr>
 
-" Resize vertical splits TODO:Find better keybindings. Tough to keep pressing with planck keyboard
-"nnoremap <Leader>l :vertical resize +20<CR>
-"nnoremap <Leader>h :vertical resize -20<CR>
+" Resize vertical splits. Mapping doesn't matter since I use tmux bindings to trigger them
+nnoremap <Leader>9 :vertical resize +10<CR>
+nnoremap <Leader>0 :vertical resize -10<CR>
 
 " Vim Fugative
 nnoremap <Leader>gs :Git<CR>
@@ -335,7 +335,7 @@ require('lualine').setup {
 -- bufferline
 require("bufferline").setup{
   options = {
-    indicator_icon = '',
+    indicator = '',
   }
 }
 

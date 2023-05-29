@@ -58,7 +58,7 @@ fi
 # nvim
 if $(which -s nvim); then
   export VISUAL=nvim
-  export VIMCONFIG=~/.config/nvim
+  export VIMCONFIG=~/.config/nvim/init.lua
   export VIMDATA=~/.local/share/nvim
   alias v=nvim
   alias vim=v

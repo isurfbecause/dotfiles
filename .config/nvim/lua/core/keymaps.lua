@@ -39,20 +39,21 @@ map('n', 'tl', ':tabnext<CR>')
 map('n','th', ':tabprev<CR>')
 map('n', 'tn', ':tabnew<CR>')
 
--- Navigate between buffers
-map('n', '<Leader>b', ':Buffers<CR>')
-
 -- Split windows
 map('n', '<leader>vs', ':vsp<cr>')
 map('n', '<leader>hs', ':split<cr>')
 
 -- Resize vertical splits. Mapping doesn't matter since I use tmux bindings to trigger them
-map('n', '<Leader>9', ':vertical resize +5<CR>')
 map('n', '<Leader>0', ':vertical resize -5<CR>')
+map('n', '<Leader>9', ':vertical resize +5<CR>')
+map('n', '<Leader>8', ':horizontal resize +5<CR>')
+map('n', '<Leader>7', ':horizontal resize -5<CR>')
 
 -- Visual Mode
 --
 
 -- Remap to copy to system clipboard
-map('v', '<leader>y', '"+y')
+map('v', '<leader>y', '"+y', {
+  desc = "Copy to system clipboard"
+})
 

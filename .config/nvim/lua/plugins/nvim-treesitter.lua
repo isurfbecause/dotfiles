@@ -11,12 +11,24 @@ if not status_ok then
   return
 end
 
--- See: https://github.com/nvim-treesitter/nvim-treesitter#quickstart
+-- For more languages see:
+-- https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
 nvim_treesitter.setup {
   -- A list of parser names, or "all"
   ensure_installed = {
-    'bash', 'css', 'html', 'javascript', 'json', 'lua', 'python',
-    'typescript', 'vim', 'yaml',
+    'bash',
+    'hcl',
+    'javascript',
+    'json',
+    'lua',
+    'python',
+    'regex',
+    'terraform',
+    'vim',
+    'yaml',
+    --'css',
+    --'html',
+    --'typescript',
   },
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,

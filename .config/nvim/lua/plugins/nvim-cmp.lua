@@ -24,20 +24,28 @@ cmp.setup {
     end,
   },
 
--- Completion settings
+  -- Window Settings
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
+
+  -- Completion settings
   completion = {
     --completeopt = 'menu,menuone,noselect'
     keyword_length = 2
   },
 
   -- Key mapping
-  mapping = {
+    mapping = {
     ['<C-n>'] = cmp.mapping.select_next_item(),
     ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<Down>'] = cmp.mapping.select_next_item(),
+    ['<Up>'] = cmp.mapping.select_prev_item(),
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
+
     ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
@@ -64,11 +72,20 @@ cmp.setup {
     end
   },
 
-  -- Load sources, see: https://github.com/topics/nvim-cmp
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'path' },
     { name = 'buffer' },
   },
+   enabled = function()
+    local in_prompt = vim.api.nvim_buf_get_option(0, 'buftype') == 'prompt'
+    if in_prompt then  -- this will disable cmp in the Telescope window (taken from the default config)
+      return false
+    end
+    local context = require("cmp.config.context")
+
+    -- Do not load cmp inside comments
+    return not(context.in_treesitter_capture("comment") == true or context.in_syntax_group("Comment"))
+  end
 }

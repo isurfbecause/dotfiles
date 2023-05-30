@@ -34,11 +34,6 @@ map('n', '<leader>fp', ':let @+ = expand(\'%:~\')<CR>')
 -- Remove serach highlighting
 map('n', '<esc>', ':noh<return><esc>')
 
--- Tab navigation
-map('n', 'tl', ':tabnext<CR>')
-map('n','th', ':tabprev<CR>')
-map('n', 'tn', ':tabnew<CR>')
-
 -- Split windows
 map('n', '<leader>vs', ':vsp<cr>')
 map('n', '<leader>hs', ':split<cr>')

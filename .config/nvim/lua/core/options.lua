@@ -6,7 +6,7 @@ local g = vim.g       -- Global variables
 local opt = vim.opt   -- Set options (global/buffer/windows-scoped)
 
 -- Time in milliseconds to wait for a key code sequence to complete.
-opt.ttimeoutlen = 0
+opt.ttimeoutlen = 1
 
 -- Minimal number of screen lines to keep above and below the cursor.
 opt.scrolloff = 8

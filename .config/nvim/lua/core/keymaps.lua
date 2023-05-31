@@ -2,7 +2,7 @@
 vim.g.mapleader = ','
 
 local function map(mode, lhs, rhs, opts)
-  local options = { noremap=true, silent=true }
+  local options = { noremap = true, silent = true }
   if opts then
     options = vim.tbl_extend('force', options, opts)
   end
@@ -44,15 +44,22 @@ map('n', '<Leader>9', ':vertical resize +5<CR>')
 map('n', '<Leader>8', ':horizontal resize +5<CR>')
 map('n', '<Leader>7', ':horizontal resize -5<CR>')
 
--- Nvim-tree
-map('n', '<Leader>nt', ':NvimTreeToggle<cr>')
-map('n', '<Leader>nf', ':NvimTreeFindFile<cr>')
+-- Join line and keep cursor in original location
+map('n', "J", "mzJ`z")
 
 -- Visual Mode
 --
 
+-- Move highlighted text up and down
+map("v", "J", ":m '>+1<CR>gv=gv")
+map("v", "K", ":m '<-2<CR>gv=gv")
+
 -- Remap to copy to system clipboard
-map('v', '<leader>y', '"+y', {
+map('v', '<leader>y', '"+ygv', {
   desc = "Copy to system clipboard"
 })
 
+-- Plugins
+-- Nvim-tree
+map('n', '<Leader>nt', ':NvimTreeToggle<cr>')
+map('n', '<Leader>nf', ':NvimTreeFindFile<cr>')

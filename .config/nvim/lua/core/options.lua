@@ -2,77 +2,79 @@
 -- See: https://neovim.io/doc/user/vim_diff.html
 -- [2] Defaults - *nvim-defaults*
 
-local g = vim.g       -- Global variables
-local opt = vim.opt   -- Set options (global/buffer/windows-scoped)
+local opt         = vim.opt -- Set options (global/buffer/windows-scoped)
 
 -- Time in milliseconds to wait for a key code sequence to complete.
-opt.ttimeoutlen = 1
+opt.ttimeoutlen   = 1
 
 -- Minimal number of screen lines to keep above and below the cursor.
-opt.scrolloff = 8
+opt.scrolloff     = 8
 
 --Disable automatic comment insertion
 opt.formatoptions = 'cro'
 
 -- Show line numbers.
-opt.number = true
+opt.number        = true
 
 -- enable mouse
-opt.mouse = 'a'
+opt.mouse         = 'a'
 
 -- statusline always on
-opt.laststatus = 3
+opt.laststatus    = 3
 
 -- autoread the file into buffer on focus
-opt.autoread = true
+opt.autoread      = true
 
 -- Indentation
 -- Number of spaces that a <Tab> in the file counts for.
-opt.tabstop = 2
+opt.tabstop       = 2
 
 -- Number of spaces to use for each step of autoindent.
-opt.shiftwidth = 2
+opt.shiftwidth    = 2
 
 -- Use the appropriate number of spaces to insert a <Tab>.
-opt.expandtab = true
-opt.smarttab = true
-opt.autoindent = true
+opt.expandtab     = true
+opt.smarttab      = true
+opt.autoindent    = true
+
+-- Set peristent-undo
+opt.undodir       = os.getenv("HOME") .. "/.nvim-undo-dir"
+opt.undofile      = true
+
+-- Disable swapfile for buffer since I use und
+opt.swapfile      = false
 
 -- Backspace through whitespace
-opt.backspace = '2'
+opt.backspace     = '2'
 
 -- Search
 -- Ignore case in search patterns.
-opt.ignorecase = true
+opt.ignorecase    = true
 
 -- Case sensitive if pattern contains upper case chars
-opt.smartcase  = true
+opt.smartcase     = true
 
 -- Highlight all search matches
-opt.hlsearch   = true
+opt.hlsearch      = true
 
 -- Highlight search matches while typing
-opt.incsearch  = true
+opt.incsearch     = true
 
 -- Splitting a window will put the new window below the current one
-opt.splitbelow = true
+opt.splitbelow    = true
 
 -- Splitting a window will put the new window right of the current one
-opt.splitright = true
+opt.splitright    = true
 
 -- Autocomplete menu like :b <TAB>
 --opt.wildmenu = true
 --opt.wildmode = 'longest:full,full'
 
 -- Increase command history
-opt.history = 200
+opt.history       = 200
 
 -- Enable 24-bit RGB colors
 opt.termguicolors = true
 
--- Set peristent-undo
-local HOME = os.getenv("HOME")
-local undo_dir = HOME.."/.nvim-undo-dir"
-
-opt.undodir = undo_dir
-opt.undofile = true
+-- Time it takes for plugins to kick in
+opt.updatetime    = 50

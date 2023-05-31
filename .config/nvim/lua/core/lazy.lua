@@ -14,6 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Init and setup
 require("lazy").setup({
+  'Mofiqul/dracula.nvim',
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -37,11 +38,14 @@ require("lazy").setup({
     'kyazdani42/nvim-tree.lua',
     dependencies = { 'kyazdani42/nvim-web-devicons' },
     lazy = true,
-    keys = {
-      { "<leader>nt", "<cmd>NvimTreeToggle<cr>", desc = "NvimTree" },
-    },
+    --keys = {
+    --  { "<leader>nt", "<cmd>NvimTreeToggle<cr>", desc = "NvimTree" },
+    --},
     config = function()
-    end,
+      require("nvim-tree").setup({
+        on_attach = on_attach,
+      })
+    end
   },
   {
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
@@ -60,6 +64,15 @@ require("lazy").setup({
   -- LSP
   { 'neovim/nvim-lspconfig' },
 
+  -- Diagnostics
+  {
+   "folke/trouble.nvim",
+   opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+   },
+  },
   -- Autocomplete
   {
     'hrsh7th/nvim-cmp',

@@ -41,14 +41,10 @@ require("lazy").setup({
     --keys = {
     --  { "<leader>nt", "<cmd>NvimTreeToggle<cr>", desc = "NvimTree" },
     --},
-    config = function()
-      require("nvim-tree").setup({
-        on_attach = on_attach,
-      })
-    end
   },
   {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.1',
     dependencies = { 'nvim-lua/plenary.nvim' }
   },
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
@@ -61,33 +57,42 @@ require("lazy").setup({
     }
   },
 
-  -- LSP
-  { 'neovim/nvim-lspconfig' },
-
   -- Diagnostics
   {
-   "folke/trouble.nvim",
-   opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-   },
-  },
-  -- Autocomplete
-  {
-    'hrsh7th/nvim-cmp',
-    -- load cmp on InsertEnter
-    event = 'InsertEnter',
-    -- these dependencies will only be loaded when cmp loads
-    -- dependencies are always lazy-loaded unless specified otherwise
-    dependencies = {
-      'L3MON4D3/LuaSnip',
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-buffer',
-      'saadparwaiz1/cmp_luasnip',
+    "folke/trouble.nvim",
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
     },
   },
+  -- lsp
+  { 'neovim/nvim-lspconfig' },
+
+  -- autocomplete
+  {
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'v2.x',
+    dependencies = {
+      -- LSP Support
+      { 'neovim/nvim-lspconfig' }, -- Required
+      {
+                                 -- Optional
+        'williamboman/mason.nvim',
+        build = function()
+          pcall(vim.cmd, 'MasonUpdate')
+        end,
+      },
+      { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+
+      -- Autocompletion
+      { 'hrsh7th/nvim-cmp' },   -- Required
+      { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+      { 'L3MON4D3/LuaSnip' },   -- Required
+    }
+  },
+
+  -- Which Key
   {
     "folke/which-key.nvim",
     event = "VeryLazy",

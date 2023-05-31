@@ -44,6 +44,10 @@ map('n', '<Leader>9', ':vertical resize +5<CR>')
 map('n', '<Leader>8', ':horizontal resize +5<CR>')
 map('n', '<Leader>7', ':horizontal resize -5<CR>')
 
+-- Nvim-tree
+map('n', '<Leader>nt', ':NvimTreeToggle<cr>')
+map('n', '<Leader>nf', ':NvimTreeFindFile<cr>')
+
 -- Visual Mode
 --
 

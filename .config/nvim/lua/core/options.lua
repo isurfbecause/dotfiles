@@ -69,3 +69,10 @@ opt.history = 200
 
 -- Enable 24-bit RGB colors
 opt.termguicolors = true
+
+-- Set peristent-undo
+local HOME = os.getenv("HOME")
+local undo_dir = HOME.."/.nvim-undo-dir"
+
+opt.undodir = undo_dir
+opt.undofile = true

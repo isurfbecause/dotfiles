@@ -52,8 +52,6 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # AWS cli
 export PATH="/opt/homebrew/opt/awscli@1/bin:$PATH"
 
-source "$HOME/.welcome_techrc"
-
 # VSCode
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 

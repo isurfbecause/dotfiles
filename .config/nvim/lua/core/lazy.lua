@@ -17,11 +17,9 @@ require("lazy").setup({
   'Mofiqul/dracula.nvim',
   {
     "catppuccin/nvim",
-    name = "catppuccin",
-    config = function()
-      require("catppuccin").setup()
-      vim.cmd([[colorscheme catppuccin]])
-    end
+    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this
+    name = "catppuccin"
   },
   {
     "dstein64/vim-startuptime",
@@ -38,16 +36,19 @@ require("lazy").setup({
     'kyazdani42/nvim-tree.lua',
     dependencies = { 'kyazdani42/nvim-web-devicons' },
     lazy = true,
-    --keys = {
-    --  { "<leader>nt", "<cmd>NvimTreeToggle<cr>", desc = "NvimTree" },
-    --},
   },
   {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.1',
     dependencies = { 'nvim-lua/plenary.nvim' }
   },
-  { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+  {
+    'natecraddock/telescope-zf-native.nvim'
+  },
+  {
+    'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate'
+  },
   {
     'lewis6991/gitsigns.nvim',
     lazy = true,
@@ -100,23 +101,11 @@ require("lazy").setup({
       vim.o.timeout = true
       vim.o.timeoutlen = 300
     end,
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
   },
-
   -- Comments
   {
-    "numToStr/Comment.nvim",
-    config = function()
-      require('Comment').setup()
-    end
+    "numToStr/Comment.nvim"
   },
 
   -- Zen Mode
-  {
-    "folke/zen-mode.nvim",
-  }
 })

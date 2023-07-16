@@ -71,6 +71,3 @@ alias tmn='tmux new-session'
 
 # Copy Date to clipboard
 alias now='printf `date +%m/%d/%Y` | pbcopy; echo "Date copied to clipboard"'
-
-# Oda
-alias oda-clone='~/bin/clone-repo.sh'
